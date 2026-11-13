@@ -1,0 +1,30 @@
+import {
+  BadgeIndianRupee,
+  ChartNoAxesCombined,
+  Clapperboard,
+  Headset,
+  Mail,
+  Megaphone,
+  MonitorSmartphone,
+  MousePointerClick,
+  Palette,
+  Search,
+  ShieldCheck,
+  Sparkles,
+  type LucideIcon,
+} from "lucide-react"
+
+export const iconMap: Record<string, LucideIcon> = {
+  BadgeIndianRupee,
+  ChartNoAxesCombined,
+  Clapperboard,
+  Headset,
+  Mail,
+  Megaphone,
+  MonitorSmartphone,
+  MousePointerClick,
+  Palette,
+  Search,
+  ShieldCheck,
+  Sparkles,
+}
