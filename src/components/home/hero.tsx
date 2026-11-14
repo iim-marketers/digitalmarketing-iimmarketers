@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check, Phone, Star } from "lucide-react";
 
+import { HeroLogo } from "@/components/home/hero-logo";
 import { LeadForm } from "@/components/site/lead-form";
 import { StatCounter } from "@/components/site/stat-counter";
 import { heroHighlights, siteConfig, stats } from "@/lib/site";
@@ -10,14 +10,7 @@ export function Hero() {
   return (
     <section aria-labelledby="hero-title" className="overflow-x-clip">
       <div className="container-page relative isolate grid gap-12 pt-8 pb-14 sm:pt-12 sm:pb-16 lg:min-h-[min(calc(100svh-87px),60rem)] lg:grid-cols-12 lg:items-center lg:gap-10 lg:py-[clamp(1.5rem,4svh,3.5rem)] xl:gap-14">
-        <Image
-          src="/images/brand/logo-footer.webp"
-          alt=""
-          aria-hidden
-          width={300}
-          height={300}
-          className="pointer-events-none absolute -top-6 -right-16 -z-10 size-72 opacity-[0.12] select-none sm:-right-10 sm:size-96 lg:top-1/2 lg:right-auto lg:left-[24%] lg:size-[min(34rem,70svh)] lg:-translate-y-1/2 lg:opacity-[0.12]"
-        />
+        <HeroLogo className="absolute -top-6 -right-16 -z-10 size-72 sm:-right-10 sm:size-96 lg:top-1/2 lg:right-auto lg:left-[24%] lg:size-[min(34rem,70svh)] lg:-translate-y-1/2" />
         <div className="lg:col-span-7">
           <p className="inline-flex items-center gap-3 rounded-full border border-line bg-white/80 py-1.5 pr-5 pl-1.5 shadow-[0_12px_32px_-20px_rgb(35_29_69/0.35)] backdrop-blur-sm">
             <span className="grid h-10 shrink-0 place-items-center rounded-full bg-brand px-3.5 font-heading text-lg font-semibold tracking-[-0.02em] text-white">

@@ -68,7 +68,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${bricolage.variable} ${geist.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(sessionStorage.getItem("iim-hero-intro"))document.documentElement.dataset.heroIntro="done"}catch(e){}`,
+          }}
+        />
+      </head>
       <body className="flex min-h-full flex-col bg-background">
         <a
           href="#main"
