@@ -1,10 +1,8 @@
-import Image from "next/image"
-
-import { LogoMarquee } from "@/components/site/logo-marquee"
-import { capabilities, clientLogos } from "@/lib/site"
+import { LogoMarquee } from "@/components/site/logo-marquee";
+import { clientLogos } from "@/lib/site";
 
 export function TrustedBrands() {
-  const half = Math.ceil(clientLogos.length / 2)
+  const half = Math.ceil(clientLogos.length / 2);
   return (
     <section aria-labelledby="brands-title" className="py-10 sm:py-12">
       <div className="container-page text-center">
@@ -20,21 +18,14 @@ export function TrustedBrands() {
         <LogoMarquee logos={clientLogos.slice(half)} duration={55} reverse />
       </div>
       <div className="container-page mt-10 flex flex-col items-center gap-5 text-center">
-        <p className="font-heading text-lg font-semibold tracking-[-0.02em] text-ink">
-          Founded by Ex-Director of Kantar and EY
+        <p className="font-heading text-2xl leading-tight font-semibold tracking-[-0.03em] text-ink sm:text-3xl lg:text-4xl">
+          Founded by{" "}
+          <span className="text-spectrum pr-[0.04em] whitespace-nowrap">
+            Ex-Director
+          </span>{" "}
+          of Kantar and EY
         </p>
-        <ul className="flex flex-wrap justify-center gap-2.5">
-          {capabilities.map((c) => (
-            <li
-              key={c.title}
-              className="inline-flex items-center gap-2 rounded-full border border-line bg-white py-1.5 pr-4 pl-2 text-sm text-ink/80"
-            >
-              <Image src={c.icon} alt="" width={22} height={22} className="size-5.5 object-contain" />
-              {c.title}
-            </li>
-          ))}
-        </ul>
       </div>
     </section>
-  )
+  );
 }

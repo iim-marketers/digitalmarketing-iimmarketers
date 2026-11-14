@@ -4,7 +4,6 @@ import { ArrowUp } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-/** Round "back to top" button with a spectrum ring. Smooth-scrolls unless reduced motion is on. */
 export function BackToTop({ className }: { className?: string }) {
   function scrollToTop() {
     const reduce = window.matchMedia(

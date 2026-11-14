@@ -8,9 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/privacy-policy" },
 }
 
-// Copied word for word from the live site's privacy policy (the WordPress default template,
-// without its "Suggested text:" labels). It describes WordPress comments and logins, which this
-// site does not have — have it reviewed before launch.
+// Verbatim WordPress default policy (mentions comments/logins this site lacks) — review before launch.
 const sections: LegalSection[] = [
   {
     heading: "Who we are",

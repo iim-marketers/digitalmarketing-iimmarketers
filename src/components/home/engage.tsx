@@ -14,8 +14,6 @@ import { sortedPosts } from "@/lib/posts";
 import { faqs, testimonials } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-/* ── Testimonials ──────────────────────────────────────────────────────── */
-
 export function Testimonials() {
   return (
     <section aria-labelledby="testimonials-title" className="pt-7 pb-14">
@@ -101,8 +99,6 @@ export function Testimonials() {
   );
 }
 
-/* ── Why us + FAQ ──────────────────────────────────────────────────────── */
-
 export function WhyUsFaq() {
   return (
     <section aria-labelledby="why-title" className="section bg-paper-deep">
@@ -148,8 +144,6 @@ export function WhyUsFaq() {
     </section>
   );
 }
-
-/* ── Latest insights ───────────────────────────────────────────────────── */
 
 export function LatestInsights() {
   return (

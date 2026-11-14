@@ -42,10 +42,9 @@ export function HeaderShell({ pathname }: { pathname: string | null }) {
           : "border-b border-transparent bg-paper"
       )}
     >
-      {/* the signature: a hairline of the logo's spectrum */}
       <div aria-hidden className="bg-spectrum h-[3px] w-full" />
 
-      <div className="container-page flex h-[68px] items-center justify-between gap-6">
+      <div className="container-page flex h-[84px] items-center justify-between gap-6">
         <Logo />
 
         <nav aria-label="Main" className="hidden lg:block">

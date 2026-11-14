@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react"
 
 import { cn } from "@/lib/utils"
 
-/** Subtle fade-and-rise as content scrolls into view. Respects reduced motion. */
 export function Reveal({
   children,
   className,

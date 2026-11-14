@@ -1,21 +1,21 @@
-import type { Metadata } from "next"
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowRight, Play } from "lucide-react"
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Play } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { iconMap } from "@/components/site/icons"
-import { PageHero } from "@/components/site/page-hero"
-import { Reveal } from "@/components/site/reveal"
-import { SectionHeading } from "@/components/site/section-heading"
-import { aboutFeatures, team } from "@/lib/site"
+import { Button } from "@/components/ui/button";
+import { iconMap } from "@/components/site/icons";
+import { PageHero } from "@/components/site/page-hero";
+import { Reveal } from "@/components/site/reveal";
+import { SectionHeading } from "@/components/site/section-heading";
+import { aboutFeatures, team } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About Us",
   description:
     "Meet IIM Marketers — dedicated editors, 24-hour delivery and stunning videos. A digital marketing team founded by IIT-IIM alumni and led by ex-Kantar and EY directors.",
   alternates: { canonical: "/about" },
-}
+};
 
 export default function AboutPage() {
   return (
@@ -44,8 +44,12 @@ export default function AboutPage() {
                 <Play className="size-5 fill-current" aria-hidden />
               </span>
               <span>
-                <span className="block font-heading text-2xl font-semibold text-ink">24 hours</span>
-                <span className="text-sm text-muted-foreground">delivery time</span>
+                <span className="block font-heading text-2xl font-semibold text-ink">
+                  24 hours
+                </span>
+                <span className="text-sm text-muted-foreground">
+                  delivery time
+                </span>
               </span>
             </div>
           </Reveal>
@@ -54,39 +58,38 @@ export default function AboutPage() {
             <SectionHeading
               eyebrow="About Your Company"
               title={
-                <span id="about-title">Dedicated Editors, 24 hours delivery time, Stunning Videos</span>
+                <span id="about-title">
+                  Dedicated Editors, 24 hours delivery time, Stunning Videos
+                </span>
               }
             />
             <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-              We Promise to provide Professional Video Editing That Engages, Converts, and Elevates
-              Your Brand. In today’s digital world, high-quality video content isn’t just an
-              option—it’s a necessity. Whether you’re a brand, business, or creator, our expert
-              video editing team ensures your videos stand out, engage your audience, and drive
-              results.
+              We Promise to provide Professional Video Editing That Engages,
+              Converts, and Elevates Your Brand. In today’s digital world,
+              high-quality video content isn’t just an option—it’s a necessity.
+              Whether you’re a brand, business, or creator, our expert video
+              editing team ensures your videos stand out, engage your audience,
+              and drive results.
             </p>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2">
               {aboutFeatures.map((f) => {
-                const Icon = iconMap[f.icon]
+                const Icon = iconMap[f.icon];
                 return (
-                  <li key={f.title} className="flex items-center gap-3 rounded-2xl border p-4">
+                  <li
+                    key={f.title}
+                    className="flex items-center gap-3 rounded-2xl border p-4"
+                  >
                     <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-paper-deep text-ink">
                       <Icon className="size-5" aria-hidden />
                     </span>
                     <span className="font-medium text-ink">{f.title}</span>
                   </li>
-                )
+                );
               })}
             </ul>
-            <Button asChild size="lg" className="mt-9 h-12 rounded-full px-7 text-base">
-              <Link href="/contact">
-                Contact us
-                <ArrowRight data-icon="inline-end" />
-              </Link>
-            </Button>
           </div>
         </div>
       </section>
-
 
       <section aria-labelledby="viral-title" className="section">
         <div className="container-page">
@@ -112,12 +115,14 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="team-title" className="pb-16 sm:pb-20 lg:pb-24">
+      <section aria-labelledby="team-title" className="pb-14">
         <div className="container-page">
           <SectionHeading
             align="center"
             eyebrow="Our Expert People"
-            title={<span id="team-title">Meet Our Professional Team Member</span>}
+            title={
+              <span id="team-title">Meet Our Professional Team Member</span>
+            }
             description="Meet friendly, experienced and knowledgeable team members who make individuals and businesses pleased with their qualification. They often take their job seriously."
           />
           <ul className="mt-12 flex flex-wrap justify-center gap-6">
@@ -145,7 +150,6 @@ export default function AboutPage() {
           </ul>
         </div>
       </section>
-
     </>
-  )
+  );
 }

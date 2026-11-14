@@ -79,7 +79,6 @@
 }
 
 :root {
-  /* IIM Marketers — "Leap": warm white canvas, deep-indigo ink (no black), violet brand surfaces, and the logo's spectrum as the one signature. */
   --brand: #5b34e8;
   --brand-soft: #eeeafd;
   --brand-deep: #4424cc;
@@ -173,7 +172,6 @@
   .section {
     @apply py-14;
   }
-  /* Small kicker above headings, marked with a spectrum dot */
   .eyebrow {
     @apply inline-flex items-center gap-2.5 text-sm font-medium text-ink/65;
   }
@@ -182,12 +180,10 @@
     @apply size-2 shrink-0 rounded-full;
     background: var(--spectrum);
   }
-  /* Section title scale */
   .title {
     @apply font-heading text-[clamp(2.25rem,4.6vw,3.75rem)] leading-[1.02] font-semibold text-ink;
     letter-spacing: -0.035em;
   }
-  /* Text version stops at orange so the word stays legible on white */
   .text-spectrum {
     background: linear-gradient(
       90deg,
@@ -209,13 +205,11 @@
   .btn-primary {
     @apply bg-brand text-white hover:bg-brand-deep;
   }
-  /* Rich violet surface for feature panels and inverted sections (replaces black) */
   .bg-panel {
     background:
       radial-gradient(120% 90% at 100% 0%, #8a4fe6 0%, transparent 55%),
       linear-gradient(135deg, #3f20c4 0%, #5b34e8 60%, #6b3ae6 100%);
   }
-  /* Light spectrum for text sitting on violet panels */
   .text-spectrum-light {
     background: linear-gradient(90deg, #ffffff 0%, #ffd9a8 45%, #ffb21f 100%);
     -webkit-background-clip: text;

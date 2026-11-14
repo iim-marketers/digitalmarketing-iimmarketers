@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react"
 
-/** Counts up from 0 once the number scrolls into view. Renders the final value without JS. */
 export function StatCounter({
   value,
   suffix = "",

@@ -2,7 +2,10 @@ import { cacheLife } from "next/cache";
 import Link from "next/link";
 import { ArrowRight, Mail, Phone } from "lucide-react";
 
-import { BackToTop } from "@/components/site/back-to-top"
+import { Suspense } from "react";
+
+import { BackToTop } from "@/components/site/back-to-top";
+import { HideOnPaths } from "@/components/site/hide-on-paths";
 import { Logo } from "@/components/site/logo";
 import { NewsletterForm } from "@/components/site/newsletter-form";
 import { footerServices, mainNav, siteConfig } from "@/lib/site";
@@ -82,12 +85,17 @@ function CtaPanel() {
 export function SiteFooter() {
   return (
     <footer className="mt-auto">
-      <CtaPanel />
+      {/* Suspense: usePathname suspends on routes whose params are only known at request time. */}
+      <Suspense fallback={<CtaPanel />}>
+        <HideOnPaths paths={["/contact"]}>
+          <CtaPanel />
+        </HideOnPaths>
+      </Suspense>
       <div className="border-t border-line">
-        <div className="container-page grid gap-12 pt-14 pb-10 md:grid-cols-2 lg:grid-cols-12">
+        <div className="container-page grid gap-12 pt-12 pb-10 md:grid-cols-2 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <Logo />
-            <p className="max-w-sm text-sm leading-relaxed text-ink/60">
+            <Logo size="md" className="mb-2" />
+            <p className="max-w-sm text-sm leading-relaxed text-ink/80">
               {siteConfig.footerBlurb}
             </p>
             <ul className="mt-6 flex flex-col gap-3 text-sm text-ink/70">
@@ -158,13 +166,15 @@ export function SiteFooter() {
         </div>
 
         <div className="container-page">
-          {/* The back-to-top button sits centred on the divider line */}
           <div className="relative flex flex-col items-center justify-between gap-3 border-t border-line pt-12 pb-6 text-xs text-ink/50 sm:flex-row sm:pt-6">
             <BackToTop className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 hover:-translate-y-[calc(50%+0.25rem)]" />
             <p>
               © All Copyright <CopyrightYear /> by IIM Marketers
             </p>
-            <Link href="/privacy-policy" className="transition-colors hover:text-ink">
+            <Link
+              href="/privacy-policy"
+              className="transition-colors hover:text-ink"
+            >
               Privacy Policy
             </Link>
           </div>

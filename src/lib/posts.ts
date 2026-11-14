@@ -6,7 +6,6 @@ export type PostBlock =
 
 export type Post = {
   slug: string
-  /** Slug used on the original WordPress site — kept for permanent redirects. */
   legacySlug: string
   title: string
   excerpt: string

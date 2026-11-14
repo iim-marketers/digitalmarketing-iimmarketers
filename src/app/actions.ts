@@ -18,10 +18,6 @@ function escapeHtml(value: string) {
   return value.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`)
 }
 
-/**
- * Delivers a submission by email when RESEND_API_KEY and CONTACT_TO_EMAIL are configured.
- * Without them (e.g. local development) the submission is logged on the server instead.
- */
 async function deliver(subject: string, data: Record<string, string>) {
   const apiKey = process.env.RESEND_API_KEY
   const to = process.env.CONTACT_TO_EMAIL
