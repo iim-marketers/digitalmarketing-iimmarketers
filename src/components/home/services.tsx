@@ -117,12 +117,12 @@ export function CaseStudies() {
       <div className="container-page">
         <SectionHead id="results-title" title="Our Completed Projects" />
 
-        <div className="mt-10 grid gap-5 sm:mt-12 lg:grid-cols-2 lg:gap-6">
+        <div className="mt-10 grid gap-5 sm:mt-12 lg:grid-cols-2">
           {caseStudies.map((c, i) => (
             <Reveal key={c.client} delay={i * 100} className="h-full">
-              <article className="group flex h-full flex-col rounded-[1.75rem] border border-line bg-white p-2.5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_32px_64px_-40px_rgb(35_29_69/0.35)]">
+              <article className="group flex h-full flex-col rounded-3xl border border-line bg-white p-2 transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_56px_-36px_rgb(35_29_69/0.35)]">
                 <div
-                  className="grid aspect-[16/10] overflow-hidden rounded-[1.25rem]"
+                  className="grid aspect-[2/1] overflow-hidden rounded-[1.1rem]"
                   style={{ gridTemplateColumns: c.mediaColumns }}
                 >
                   <div className="relative overflow-hidden">
@@ -130,7 +130,7 @@ export function CaseStudies() {
                       src={c.photo.src}
                       alt={c.photoAlt}
                       fill
-                      sizes="(min-width: 1024px) 440px, 75vw"
+                      sizes="(min-width: 1024px) 360px, 60vw"
                       style={{ objectPosition: c.photo.position }}
                       className="object-cover transition duration-500 group-hover:scale-[1.04]"
                     />
@@ -142,32 +142,35 @@ export function CaseStudies() {
                     <Image
                       src={c.logo}
                       alt={`${c.client} logo`}
-                      width={160}
-                      height={160}
-                      className="aspect-square w-[72%] max-w-36 rounded-2xl object-cover shadow-[0_18px_40px_-18px_rgb(0_0_0/0.45)] ring-1 ring-white/25"
+                      width={112}
+                      height={112}
+                      className="aspect-square w-[62%] max-w-24 rounded-xl object-cover shadow-[0_14px_32px_-16px_rgb(0_0_0/0.45)] ring-1 ring-white/25 transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
                 </div>
 
-                <div className="flex flex-1 flex-col px-4 pt-6 pb-4 sm:px-6 sm:pt-7 sm:pb-6">
-                  <h3 className="font-sans text-base font-semibold tracking-normal text-ink">
+                <div className="flex flex-1 flex-col px-4 pt-5 pb-4 sm:px-5">
+                  <h3 className="flex items-center gap-2 font-sans text-sm font-semibold tracking-normal text-ink/80">
+                    <span
+                      aria-hidden
+                      className="size-2 rounded-full"
+                      style={{ backgroundColor: c.brandColor }}
+                    />
                     {c.client}
                   </h3>
-                  <p className="mt-4">
+                  <div className="mt-auto pt-3">
                     {c.lead ? (
-                      <span className="block text-lg font-medium text-ink/75">
-                        {c.lead}
-                      </span>
+                      <p className="text-[0.95rem] text-ink/60">{c.lead}</p>
                     ) : null}
-                    <span className="mt-1 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                      <span className="text-spectrum font-heading text-[clamp(3rem,6vw,4.75rem)] leading-[1.05] font-semibold tracking-[-0.06em]">
+                    <p className="flex flex-wrap items-baseline gap-x-3">
+                      <span className="text-spectrum font-heading text-[clamp(2.25rem,3.6vw,3rem)] leading-[1.1] font-semibold tracking-[-0.05em]">
                         {c.metric}
                       </span>
-                      <span className="text-lg font-medium text-ink/75">
+                      <span className="text-[0.95rem] font-medium text-ink/70">
                         {c.text}
                       </span>
-                    </span>
-                  </p>
+                    </p>
+                  </div>
                 </div>
               </article>
             </Reveal>
