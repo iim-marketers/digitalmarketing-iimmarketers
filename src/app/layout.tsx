@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next"
-import { Nunito, Rubik } from "next/font/google"
+import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google"
 import { Suspense } from "react"
 
 import { HeaderShell, SiteHeader } from "@/components/site/site-header"
@@ -9,14 +9,19 @@ import { TooltipProvider } from "@/components/ui/tooltip"
 import { siteConfig } from "@/lib/site"
 import "./globals.css"
 
-const nunito = Nunito({
-  variable: "--font-nunito",
+// Characterful grotesk for headings; Geist carries body copy.
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
   subsets: ["latin"],
-  weight: ["600", "700", "800", "900"],
 })
 
-const rubik = Rubik({
-  variable: "--font-rubik",
+const geist = Geist({
+  variable: "--font-geist",
+  subsets: ["latin"],
+})
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
 })
 
@@ -54,12 +59,12 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#5027cb",
+  themeColor: "#fbfaf7",
 }
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${nunito.variable} ${rubik.variable} h-full antialiased`}>
+    <html lang="en" className={`${bricolage.variable} ${geist.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-background">
         <a
           href="#main"

@@ -1,20 +1,7 @@
-import { CapabilityTicker, Offering, TrustedBrands } from "@/components/home/trust"
 import { Hero } from "@/components/home/hero"
-import {
-  CaseStudies,
-  CoreServices,
-  Guarantees,
-  HowItWorks,
-  Solutions,
-  Studio,
-} from "@/components/home/services"
-import {
-  ContactSection,
-  LatestInsights,
-  Testimonials,
-  VideoEditingCta,
-  WhyUsFaq,
-} from "@/components/home/engage"
+import { TrustedBrands } from "@/components/home/trust"
+import { CaseStudies, CoreServices, HowItWorks, OurServices, Studio } from "@/components/home/services"
+import { LatestInsights, Testimonials, WhyUsFaq } from "@/components/home/engage"
 import { faqs, siteConfig } from "@/lib/site"
 
 const jsonLd = {
@@ -50,21 +37,14 @@ export default function HomePage() {
       />
       <Hero />
       <TrustedBrands />
-      <div className="overflow-hidden py-6">
-        <CapabilityTicker />
-      </div>
-      <Offering />
       <CoreServices />
       <CaseStudies />
       <HowItWorks />
       <Studio />
-      <Guarantees />
       <Testimonials />
-      <Solutions />
+      <OurServices />
       <WhyUsFaq />
-      <VideoEditingCta />
       <LatestInsights />
-      <ContactSection />
     </>
   )
 }

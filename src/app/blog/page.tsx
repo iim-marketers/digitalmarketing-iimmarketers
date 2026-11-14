@@ -16,7 +16,6 @@ export default function BlogPage() {
     <>
       <PageHero
         title="Blog"
-        description="Practical insights on video, content and performance marketing from our team."
         crumbs={[{ label: "Home", href: "/" }, { label: "Blog" }]}
       />
       <PostListing posts={sortedPosts} />

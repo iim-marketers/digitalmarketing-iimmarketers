@@ -2,12 +2,11 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, CalendarDays, Clock, Folder } from "lucide-react"
+import { ArrowLeft, CalendarDays, Folder } from "lucide-react"
 
 import { BlogSidebar } from "@/components/site/blog-sidebar"
 import { PageHero } from "@/components/site/page-hero"
-import { PostCard } from "@/components/site/post-card"
-import { formatDate, getPost, posts, sortedPosts, type PostBlock } from "@/lib/posts"
+import { formatDate, getPost, posts, type PostBlock } from "@/lib/posts"
 import { siteConfig } from "@/lib/site"
 
 export function generateStaticParams() {
@@ -35,7 +34,7 @@ export async function generateMetadata(props: PageProps<"/blog/[slug]">): Promis
 function Block({ block }: { block: PostBlock }) {
   switch (block.type) {
     case "h2":
-      return <h2 className="mt-10 text-2xl font-extrabold">{block.text}</h2>
+      return <h2 className="mt-10 text-2xl font-semibold">{block.text}</h2>
     case "p":
       return <p className="mt-5 text-[1.05rem] leading-relaxed text-ink/80">{block.text}</p>
     case "list":
@@ -73,7 +72,6 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
   const post = getPost(slug)
   if (!post) notFound()
 
-  const related = sortedPosts.filter((p) => p.slug !== post.slug).slice(0, 2)
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -118,10 +116,6 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
                 <CalendarDays className="size-4" aria-hidden />
                 <time dateTime={post.date}>{formatDate(post.date)}</time>
               </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Clock className="size-4" aria-hidden />
-                {post.readingMinutes} min read
-              </span>
               <Link
                 href={`/category/${post.category.slug}`}
                 className="inline-flex items-center gap-1.5 hover:text-brand"
@@ -158,20 +152,6 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
               </Link>
             </div>
 
-            {related.length > 0 ? (
-              <section aria-labelledby="related-title" className="mt-16">
-                <h2 id="related-title" className="text-2xl font-extrabold">
-                  Keep reading
-                </h2>
-                <ul className="mt-6 grid gap-6 sm:grid-cols-2">
-                  {related.map((p) => (
-                    <li key={p.slug}>
-                      <PostCard post={p} />
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ) : null}
           </article>
 
           <BlogSidebar excludeSlug={post.slug} activeCategory={post.category.slug} />

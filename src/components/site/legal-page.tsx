@@ -9,8 +9,8 @@ export function LegalPage({
   sections,
 }: {
   title: string
-  updated: string
-  intro: string
+  updated?: string
+  intro?: string
   sections: LegalSection[]
 }) {
   return (
@@ -28,7 +28,7 @@ export function LegalPage({
                   <li key={s.heading}>
                     <a
                       href={`#section-${i + 1}`}
-                      className="-ml-px block border-l border-transparent py-1 pl-4 text-ink/70 transition-colors hover:border-brand hover:text-brand"
+                      className="-ml-px block border-l border-transparent py-1 pl-4 text-ink/70 transition-colors hover:border-ink hover:text-ink"
                     >
                       {s.heading}
                     </a>
@@ -38,11 +38,13 @@ export function LegalPage({
             </div>
           </nav>
           <article className="max-w-3xl">
-            <p className="text-sm text-muted-foreground">Last updated: {updated}</p>
-            <p className="mt-4 text-lg leading-relaxed text-ink/80">{intro}</p>
+            {updated ? (
+              <p className="mb-4 text-sm text-muted-foreground">Last updated: {updated}</p>
+            ) : null}
+            {intro ? <p className="text-lg leading-relaxed text-ink/80">{intro}</p> : null}
             {sections.map((s, i) => (
               <section key={s.heading} id={`section-${i + 1}`} className="scroll-mt-28">
-                <h2 className="mt-10 text-2xl font-extrabold">{s.heading}</h2>
+                <h2 className="mt-10 text-2xl font-semibold first:mt-0">{s.heading}</h2>
                 {s.paragraphs.map((p) => (
                   <p key={p} className="mt-4 leading-relaxed text-ink/75">
                     {p}

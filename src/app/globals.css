@@ -7,9 +7,10 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-rubik);
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
-  --font-heading: var(--font-nunito);
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono:
+    var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-heading: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -48,62 +49,87 @@
   --radius-4xl: calc(var(--radius) * 2.6);
   --color-brand: var(--brand);
   --color-brand-soft: var(--brand-soft);
+  --color-brand-deep: var(--brand-deep);
   --color-amber: var(--amber);
   --color-ink: var(--ink);
   --color-lavender: var(--lavender);
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-line: var(--line);
   --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
-  --animate-marquee-reverse: marquee-reverse var(--marquee-duration, 40s) linear infinite;
+  --animate-marquee-reverse: marquee-reverse var(--marquee-duration, 40s) linear
+    infinite;
 
   @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(calc(-50% - var(--marquee-gap, 2rem) / 2)); }
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-50% - var(--marquee-gap, 2rem) / 2));
+    }
   }
   @keyframes marquee-reverse {
-    from { transform: translateX(calc(-50% - var(--marquee-gap, 2rem) / 2)); }
-    to { transform: translateX(0); }
+    from {
+      transform: translateX(calc(-50% - var(--marquee-gap, 2rem) / 2));
+    }
+    to {
+      transform: translateX(0);
+    }
   }
 }
 
 :root {
-  /* IIM Marketers brand */
-  --brand: #5027cb;
-  --brand-soft: #ede8fb;
-  --amber: #ffb32e;
-  --ink: #1d1729;
-  --lavender: #f4f2f9;
+  /* IIM Marketers — "Leap": warm white canvas, deep-indigo ink (no black), violet brand surfaces, and the logo's spectrum as the one signature. */
+  --brand: #5b34e8;
+  --brand-soft: #eeeafd;
+  --brand-deep: #4424cc;
+  --amber: #ffb21f;
+  --ink: #231d45;
+  --paper: #fbfaf7;
+  --paper-deep: #f3f1ec;
+  --lavender: #f3f1ec;
+  --line: #e8e5df;
+  --spectrum: linear-gradient(
+    90deg,
+    #2f6bff 0%,
+    #6a3cf5 28%,
+    #c43aa6 56%,
+    #ff6a2b 80%,
+    #ffb21f 100%
+  );
 
-  --background: #ffffff;
-  --foreground: #1d1729;
+  --background: #fbfaf7;
+  --foreground: #231d45;
   --card: #ffffff;
-  --card-foreground: #1d1729;
+  --card-foreground: #231d45;
   --popover: #ffffff;
-  --popover-foreground: #1d1729;
-  --primary: #5027cb;
+  --popover-foreground: #231d45;
+  --primary: #5b34e8;
   --primary-foreground: #ffffff;
-  --secondary: #f4f2f9;
-  --secondary-foreground: #1d1729;
-  --muted: #f7f6fb;
-  --muted-foreground: #625f7a;
-  --accent: #f4f2f9;
-  --accent-foreground: #5027cb;
+  --secondary: #f3f1ec;
+  --secondary-foreground: #231d45;
+  --muted: #f3f1ec;
+  --muted-foreground: #63606b;
+  --accent: #f3f1ec;
+  --accent-foreground: #231d45;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #e9e6ed;
-  --input: #e2deea;
-  --ring: #5027cb;
-  --chart-1: #5027cb;
-  --chart-2: #ffb32e;
-  --chart-3: #720eec;
-  --chart-4: #1d1729;
-  --chart-5: #696687;
-  --radius: 0.75rem;
+  --border: #e8e5df;
+  --input: #dedad3;
+  --ring: #5b34e8;
+  --chart-1: #5b34e8;
+  --chart-2: #ffb21f;
+  --chart-3: #c43aa6;
+  --chart-4: #231d45;
+  --chart-5: #2f6bff;
+  --radius: 0.875rem;
   --sidebar: #ffffff;
-  --sidebar-foreground: #1d1729;
-  --sidebar-primary: #5027cb;
+  --sidebar-foreground: #231d45;
+  --sidebar-primary: #5b34e8;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f4f2f9;
-  --sidebar-accent-foreground: #5027cb;
-  --sidebar-border: #e9e6ed;
-  --sidebar-ring: #5027cb;
+  --sidebar-accent: #f3f1ec;
+  --sidebar-accent-foreground: #231d45;
+  --sidebar-border: #e8e5df;
+  --sidebar-ring: #5b34e8;
 }
 
 @layer base {
@@ -113,22 +139,30 @@
   body {
     @apply bg-background text-foreground;
   }
-  button:not(:disabled), [role="button"]:not(:disabled) {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
     cursor: pointer;
   }
   html {
     @apply font-sans;
     scroll-behavior: smooth;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-heading text-ink;
+    font-weight: 600;
     text-wrap: balance;
+    letter-spacing: -0.025em;
   }
   p {
     text-wrap: pretty;
   }
   ::selection {
-    background: color-mix(in oklab, var(--brand) 20%, transparent);
+    background: color-mix(in oklab, var(--brand) 18%, transparent);
   }
 }
 
@@ -137,24 +171,94 @@
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
   .section {
-    @apply py-16 sm:py-20 lg:py-24;
+    @apply py-14;
   }
+  /* Small kicker above headings, marked with a spectrum dot */
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] text-brand uppercase;
+    @apply inline-flex items-center gap-2.5 text-sm font-medium text-ink/65;
   }
   .eyebrow::before {
     content: "";
-    @apply h-px w-6 bg-amber;
+    @apply size-2 shrink-0 rounded-full;
+    background: var(--spectrum);
+  }
+  /* Section title scale */
+  .title {
+    @apply font-heading text-[clamp(2.25rem,4.6vw,3.75rem)] leading-[1.02] font-semibold text-ink;
+    letter-spacing: -0.035em;
+  }
+  /* Text version stops at orange so the word stays legible on white */
+  .text-spectrum {
+    background: linear-gradient(
+      90deg,
+      #2f6bff 0%,
+      #6a3cf5 32%,
+      #c43aa6 66%,
+      #ff6a2b 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .bg-spectrum {
+    background: var(--spectrum);
+  }
+  .btn {
+    @apply inline-flex h-12 items-center justify-center gap-2 rounded-full px-6 text-[0.95rem] font-medium whitespace-nowrap transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand;
+  }
+  .btn-primary {
+    @apply bg-brand text-white hover:bg-brand-deep;
+  }
+  /* Rich violet surface for feature panels and inverted sections (replaces black) */
+  .bg-panel {
+    background:
+      radial-gradient(120% 90% at 100% 0%, #8a4fe6 0%, transparent 55%),
+      linear-gradient(135deg, #3f20c4 0%, #5b34e8 60%, #6b3ae6 100%);
+  }
+  /* Light spectrum for text sitting on violet panels */
+  .text-spectrum-light {
+    background: linear-gradient(90deg, #ffffff 0%, #ffd9a8 45%, #ffb21f 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .btn-light {
+    @apply border border-ink/15 bg-white text-ink hover:border-ink/40;
   }
   .bg-grid {
     background-image:
-      linear-gradient(to right, color-mix(in oklab, var(--brand) 6%, transparent) 1px, transparent 1px),
-      linear-gradient(to bottom, color-mix(in oklab, var(--brand) 6%, transparent) 1px, transparent 1px);
-    background-size: 48px 48px;
+      linear-gradient(
+        to right,
+        color-mix(in oklab, var(--ink) 5%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in oklab, var(--ink) 5%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 56px 56px;
+  }
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .animate-marquee, .animate-marquee-reverse { animation: none; }
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee,
+  .animate-marquee-reverse {
+    animation: none;
+  }
+  .motion-safe-only {
+    animation: none !important;
+  }
 }

@@ -26,11 +26,11 @@ export function SectionHeading({
       )}
     >
       {eyebrow ? (
-        <span className={cn("eyebrow", inverted && "text-amber")}>{eyebrow}</span>
+        <span className={cn("eyebrow", inverted && "text-white/75")}>{eyebrow}</span>
       ) : null}
       <Tag
         className={cn(
-          "text-3xl leading-tight font-extrabold sm:text-4xl",
+          "text-[clamp(2rem,3.6vw,3rem)] leading-[1.05] tracking-[-0.035em]",
           inverted && "text-white"
         )}
       >
@@ -40,7 +40,7 @@ export function SectionHeading({
         <p
           className={cn(
             "text-base leading-relaxed sm:text-lg",
-            inverted ? "text-white/70" : "text-muted-foreground"
+            inverted ? "text-white/75" : "text-ink/60"
           )}
         >
           {description}
