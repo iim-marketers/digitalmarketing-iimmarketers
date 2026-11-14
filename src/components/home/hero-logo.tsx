@@ -6,11 +6,10 @@ import { preload } from "react-dom";
 
 import { cn } from "@/lib/utils";
 
-/** Must match the key in the inline script in app/layout.tsx. */
 export const HERO_INTRO_KEY = "iim-hero-intro";
 
 const DEER_SRC = "/images/brand/logo-mark.webp";
-/** Adapted from "animal" by Saheb on LottieFiles (Lottie Simple License). */
+
 const RUN_SPRITE_SRC = "/images/brand/deer-run.webp";
 
 const FINAL_ANIMATIONS = ["hero-deer-back-run", "hero-deer-glow"];

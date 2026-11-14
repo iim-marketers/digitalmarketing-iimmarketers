@@ -143,7 +143,6 @@ export const solutions = [
   },
 ];
 
-/** "How It Works" — the live site only names steps 3 and 4. */
 export const processSteps: { title?: string; description: string }[] = [
   { description: "Our team of IIM grads analyze your business" },
   {

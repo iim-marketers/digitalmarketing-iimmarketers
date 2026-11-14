@@ -9,7 +9,7 @@ export type Post = {
   legacySlug: string
   title: string
   excerpt: string
-  date: string // ISO
+  date: string
   category: { slug: string; name: string }
   tags: { slug: string; name: string }[]
   cover: { src: string; width: number; height: number }
