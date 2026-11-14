@@ -41,7 +41,7 @@ export function LogoMarquee({
               alt={i >= logos.length ? "" : "Client logo"}
               width={200}
               height={90}
-              className="max-h-12 w-auto object-contain opacity-60 mix-blend-multiply grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
+              className="max-h-12 w-auto object-contain mix-blend-multiply"
             />
           </li>
         ))}

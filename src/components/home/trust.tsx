@@ -4,7 +4,7 @@ import { clientLogos } from "@/lib/site"
 export function TrustedBrands() {
   const half = Math.ceil(clientLogos.length / 2)
   return (
-    <section aria-labelledby="brands-title" className="py-16 sm:py-20">
+    <section aria-labelledby="brands-title" className="py-10 sm:py-12">
       <div className="container-page">
         <h2
           id="brands-title"

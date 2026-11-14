@@ -1,24 +1,24 @@
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowRight, Check, Star } from "lucide-react"
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Check, Star } from "lucide-react";
 
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
-import { PostCard } from "@/components/site/post-card"
-import { Reveal } from "@/components/site/reveal"
-import { sortedPosts } from "@/lib/posts"
-import { faqs, testimonials } from "@/lib/site"
-import { cn } from "@/lib/utils"
+} from "@/components/ui/accordion";
+import { PostCard } from "@/components/site/post-card";
+import { Reveal } from "@/components/site/reveal";
+import { sortedPosts } from "@/lib/posts";
+import { faqs, testimonials } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
 /* ── Testimonials ──────────────────────────────────────────────────────── */
 
 export function Testimonials() {
   return (
-    <section aria-labelledby="testimonials-title" className="section">
+    <section aria-labelledby="testimonials-title" className="pt-7 pb-14">
       <div className="container-page">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div>
@@ -44,19 +44,27 @@ export function Testimonials() {
 
         <div className="mt-14 gap-5 md:columns-2 lg:columns-3">
           {testimonials.map((t, i) => {
-            const featured = i === 0
+            const featured = i === 0;
             return (
-              <Reveal key={t.name} delay={(i % 3) * 80} className="mb-5 break-inside-avoid">
+              <Reveal
+                key={t.name}
+                delay={(i % 3) * 80}
+                className="mb-5 break-inside-avoid"
+              >
                 <figure
                   className={cn(
                     "rounded-3xl p-7 sm:p-8",
-                    featured ? "bg-panel text-white" : "border border-line bg-white"
+                    featured
+                      ? "bg-panel text-white"
+                      : "border border-line bg-white",
                   )}
                 >
                   <blockquote
                     className={cn(
                       "leading-relaxed",
-                      featured ? "text-lg text-white/85" : "text-[1.02rem] text-ink/75"
+                      featured
+                        ? "text-lg text-white/85"
+                        : "text-[1.02rem] text-ink/75",
                     )}
                   >
                     “{t.quote}”
@@ -70,22 +78,32 @@ export function Testimonials() {
                       className="size-11 rounded-full object-cover"
                     />
                     <span className="flex flex-col">
-                      <span className={cn("font-semibold", featured ? "text-white" : "text-ink")}>
+                      <span
+                        className={cn(
+                          "font-semibold",
+                          featured ? "text-white" : "text-ink",
+                        )}
+                      >
                         {t.name}
                       </span>
-                      <span className={cn("text-sm", featured ? "text-white/75" : "text-ink/50")}>
+                      <span
+                        className={cn(
+                          "text-sm",
+                          featured ? "text-white/75" : "text-ink/50",
+                        )}
+                      >
                         {t.role}
                       </span>
                     </span>
                   </figcaption>
                 </figure>
               </Reveal>
-            )
+            );
           })}
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 /* ── Why us + FAQ ──────────────────────────────────────────────────────── */
@@ -95,7 +113,7 @@ const reasons = [
   "No contracts or hidden clauses — flexible payments",
   "Money-back guarantee and 100% satisfaction promise",
   "Cheaper than hiring an unreliable freelancer",
-]
+];
 
 export function WhyUsFaq() {
   return (
@@ -103,14 +121,14 @@ export function WhyUsFaq() {
       <div className="container-page grid gap-14 lg:grid-cols-12 lg:gap-16">
         <div className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
           <p className="eyebrow">Why IIM Marketers</p>
-          <h2 id="why-title" className="title mt-5">
+          <h2 id="why-title" className="title mt-2">
             Questions, answered.
           </h2>
-          <p className="mt-6 max-w-md text-lg leading-relaxed text-ink/60">
-            Top-notch delivery at a fair price — led by an Ex-Director of Kantar Europe and an
-            Ex-Director of EY.
+          <p className="mt-4 max-w-md text-lg leading-relaxed text-ink/60">
+            Top-notch delivery at a fair price — led by an Ex-Director of Kantar
+            Europe and an Ex-Director of EY.
           </p>
-          <ul className="mt-8 flex flex-col gap-3">
+          <ul className="mt-6 flex flex-col gap-3">
             {reasons.map((r) => (
               <li key={r} className="flex items-start gap-3 text-ink/80">
                 <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-brand text-white">
@@ -127,7 +145,6 @@ export function WhyUsFaq() {
           <Accordion
             type="single"
             collapsible
-            defaultValue="faq-0"
             className="gap-3"
           >
             {faqs.map((f, i) => (
@@ -136,10 +153,10 @@ export function WhyUsFaq() {
                 value={`faq-${i}`}
                 className="rounded-2xl border-0 bg-white px-6 not-last:border-b-0 data-[state=open]:shadow-[0_20px_40px_-32px_rgb(18_17_23/0.35)]"
               >
-                <AccordionTrigger className="items-center py-5 font-heading text-lg leading-snug font-medium tracking-[-0.015em] text-ink hover:no-underline sm:text-xl">
+                <AccordionTrigger className="items-center pt-4 font-heading text-lg leading-snug font-medium tracking-[-0.015em] text-ink hover:no-underline">
                   {f.q}
                 </AccordionTrigger>
-                <AccordionContent className="pb-6 text-base leading-relaxed text-ink/65">
+                <AccordionContent className="pb-6 text-sm leading-relaxed text-ink/65">
                   <p>{f.a}</p>
                 </AccordionContent>
               </AccordionItem>
@@ -148,7 +165,7 @@ export function WhyUsFaq() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 /* ── Latest insights ───────────────────────────────────────────────────── */
@@ -180,5 +197,5 @@ export function LatestInsights() {
         </div>
       </div>
     </section>
-  )
+  );
 }
