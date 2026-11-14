@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowUpRight, CalendarDays, Clock } from "lucide-react"
+import { ArrowUpRight, CalendarDays } from "lucide-react"
 
 import { formatDate, type Post } from "@/lib/posts"
 import { cn } from "@/lib/utils"
@@ -34,10 +34,6 @@ export function PostCard({ post, className }: { post: Post; className?: string }
           <span className="inline-flex items-center gap-1.5">
             <CalendarDays className="size-3.5" aria-hidden />
             <time dateTime={post.date}>{formatDate(post.date)}</time>
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <Clock className="size-3.5" aria-hidden />
-            {post.readingMinutes} min read
           </span>
         </div>
         <h3 className="mt-3 text-xl leading-snug tracking-[-0.02em]">

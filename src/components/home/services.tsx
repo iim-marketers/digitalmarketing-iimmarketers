@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, ArrowUpRight, Check, Clock } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Check } from "lucide-react"
 
 import { iconMap } from "@/components/site/icons"
 import { Reveal } from "@/components/site/reveal"
@@ -9,6 +9,7 @@ import {
   coreServices,
   processSteps,
   socialGuarantees,
+  solutions,
   studioFeatures,
   studioPhotos,
 } from "@/lib/site"
@@ -24,7 +25,7 @@ function SectionHead({
   inverted = false,
 }: {
   id: string
-  eyebrow: string
+  eyebrow?: string
   title: React.ReactNode
   aside?: React.ReactNode
   inverted?: boolean
@@ -32,8 +33,10 @@ function SectionHead({
   return (
     <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
       <div className="lg:col-span-7">
-        <p className={cn("eyebrow", inverted && "text-white/75")}>{eyebrow}</p>
-        <h2 id={id} className={cn("title mt-5", inverted && "text-white")}>
+        {eyebrow ? (
+          <p className={cn("eyebrow mb-5", inverted && "text-white/75")}>{eyebrow}</p>
+        ) : null}
+        <h2 id={id} className={cn("title", inverted && "text-white")}>
           {title}
         </h2>
       </div>
@@ -59,16 +62,22 @@ export function CoreServices() {
       <div className="container-page">
         <SectionHead
           id="services-title"
-          eyebrow="What we do"
-          title="Everything you need to grow, under one roof."
+          eyebrow="Our Core Services"
+          title="IIM Marketers: Your Partner for Performance Driven Digital Marketing in Bengaluru"
           aside={
             <>
-              <p>Performance-driven marketing — from the first click to the final sale.</p>
+              <p className="text-base">
+                At IIM Marketers, we pride ourselves on being the top digital marketing agency in
+                Bengaluru, offering a comprehensive suite of services designed to deliver measurable
+                results and long-term ROI. Our specialized digital marketing team, in-house AI
+                experts, and state-of-the-art video studio collaborate to craft strategies that
+                elevate your brand.
+              </p>
               <Link
                 href="/contact"
                 className="mt-3 inline-flex items-center gap-1.5 text-base font-medium text-ink underline decoration-ink/20 underline-offset-4 transition-colors hover:decoration-ink"
               >
-                Discuss your project <ArrowRight className="size-4" aria-hidden />
+                Contact Us <ArrowRight className="size-4" aria-hidden />
               </Link>
             </>
           }
@@ -101,9 +110,7 @@ export function CaseStudies() {
       <div className="container-page">
         <SectionHead
           id="results-title"
-          eyebrow="Results"
-          title="Outcomes our clients can bank on."
-          aside={<p>We measure success the way you do: footfall, orders and revenue.</p>}
+          title="Our Completed Projects"
         />
 
         <div className="mt-10 grid gap-5 sm:mt-12 lg:grid-cols-2 lg:gap-6">
@@ -124,9 +131,6 @@ export function CaseStudies() {
                       style={{ objectPosition: c.photo.position }}
                       className="object-cover transition duration-500 group-hover:scale-[1.04]"
                     />
-                    <span className="absolute top-3 left-3 rounded-full bg-white/90 px-2.5 py-1 text-[0.7rem] font-medium text-ink shadow-sm backdrop-blur-sm sm:top-4 sm:left-4 sm:text-xs">
-                      {c.brief}
-                    </span>
                   </div>
                   <div
                     className="flex items-center justify-center p-3"
@@ -143,22 +147,20 @@ export function CaseStudies() {
                 </div>
 
                 <div className="flex flex-1 flex-col px-4 pt-6 pb-4 sm:px-6 sm:pt-7 sm:pb-6">
-                  <div className="flex flex-wrap items-center justify-between gap-3">
-                    <h3 className="font-sans text-base font-semibold tracking-normal text-ink">
-                      {c.client}
-                    </h3>
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-3 py-1 text-xs font-medium text-brand">
-                      <Clock className="size-3.5" aria-hidden />
-                      In {c.timeline}
+                  <h3 className="font-sans text-base font-semibold tracking-normal text-ink">
+                    {c.client}
+                  </h3>
+                  <p className="mt-4">
+                    {c.lead ? (
+                      <span className="block text-lg font-medium text-ink/75">{c.lead}</span>
+                    ) : null}
+                    <span className="mt-1 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <span className="text-spectrum font-heading text-[clamp(3rem,6vw,4.75rem)] leading-[1.05] font-semibold tracking-[-0.06em]">
+                        {c.metric}
+                      </span>
+                      <span className="text-lg font-medium text-ink/75">{c.text}</span>
                     </span>
-                  </div>
-                  <p className="mt-5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <span className="text-spectrum font-heading text-[clamp(3rem,6vw,4.75rem)] leading-[1.05] font-semibold tracking-[-0.06em]">
-                      {c.metric}
-                    </span>
-                    <span className="text-lg font-medium text-ink/75">{c.metricLabel}</span>
                   </p>
-                  <p className="mt-4 text-[0.95rem] leading-relaxed text-ink/60">{c.detail}</p>
                 </div>
               </article>
             </Reveal>
@@ -166,13 +168,9 @@ export function CaseStudies() {
         </div>
 
         <Reveal delay={200}>
-          <div className="mt-5 flex flex-col items-start justify-between gap-4 rounded-[1.75rem] border border-line bg-white px-6 py-5 sm:flex-row sm:items-center sm:px-8 lg:mt-6">
-            <p className="text-ink/70">
-              <span className="font-semibold text-ink">Your brand could be next.</span> Get a free
-              growth plan built around your numbers.
-            </p>
-            <Link href="/contact" className="btn btn-primary group h-11 shrink-0 px-5 max-sm:w-full">
-              Get my free growth plan
+          <div className="mt-8 flex justify-center">
+            <Link href="/contact" className="btn btn-primary group max-sm:w-full">
+              Get Free Trial
               <ArrowRight
                 className="size-4 transition-transform group-hover:translate-x-0.5"
                 aria-hidden
@@ -212,13 +210,9 @@ export function HowItWorks({
       <div className="container-page">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
-            <p className="eyebrow text-white/75">How we work</p>
-            <h2 id="process-title" className="title mt-5 text-white">
-              Four steps from today to 3×.
+            <h2 id="process-title" className="title text-white">
+              How It Works
             </h2>
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/75">
-              A process run by IIM graduates — structured, transparent and obsessed with outcomes.
-            </p>
           </div>
           <div className="hidden lg:col-span-4 lg:col-start-9 lg:block">
             <Image
@@ -261,28 +255,34 @@ export function HowItWorks({
           </svg>
           {processSteps.map((step, i) => (
             <span
-              key={step.title}
+              key={i}
               className="absolute size-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-[3px] border-brand bg-white"
               style={{ left: `${stepAt(i) * 100}%`, top: `${(leapY(stepAt(i)) / 160) * 100}%` }}
             />
           ))}
-          <span className="absolute bottom-[-1.75rem] left-0 text-xs text-white/65">Today · 1×</span>
-          <span className="absolute -top-7 right-0 text-xs font-medium text-amber">Month 6 · 3×</span>
         </div>
 
         <ol className="mt-14 grid gap-10 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4 lg:gap-8">
           {processSteps.map((step, i) => (
             <Reveal
               as="li"
-              key={step.title}
+              key={i}
               delay={i * 100}
               className="border-l border-white/25 pl-6 lg:border-l-0 lg:pl-0 lg:text-center"
             >
               <span className="text-sm text-white/65">Step {i + 1}</span>
-              <h3 className="mt-2 text-2xl text-white">{step.title}</h3>
-              <p className="mt-2 text-[0.95rem] leading-relaxed text-white/75 lg:mx-auto lg:max-w-[16rem]">
-                {step.description}
-              </p>
+              {step.title ? (
+                <>
+                  <h3 className="mt-2 text-2xl text-white">{step.title}</h3>
+                  <p className="mt-2 text-[0.95rem] leading-relaxed text-white/75 lg:mx-auto lg:max-w-[16rem]">
+                    {step.description}
+                  </p>
+                </>
+              ) : (
+                <h3 className="mt-2 text-xl leading-snug text-white lg:mx-auto lg:max-w-[16rem]">
+                  {step.description}
+                </h3>
+              )}
             </Reveal>
           ))}
         </ol>
@@ -306,14 +306,8 @@ export function Studio() {
       <div className="container-page">
         <SectionHead
           id="studio-title"
-          eyebrow="In-house studio"
-          title="A video studio and an AI tool, under the same roof."
-          aside={
-            <p>
-              Strategists, editors and engineers work side by side — so ideas move from brief to
-              published in hours, not weeks.
-            </p>
-          }
+          eyebrow="Team"
+          title="In-house Video Studio + Proprietary AI Tool"
         />
 
         <div className="mt-14 grid auto-rows-[160px] grid-cols-2 gap-3 sm:auto-rows-[220px] sm:gap-4 lg:grid-cols-4 lg:auto-rows-[240px]">
@@ -330,7 +324,7 @@ export function Studio() {
           ))}
         </div>
 
-        <ul className="mt-14 grid gap-10 md:grid-cols-3">
+        <ul className="mt-14 grid gap-10 md:grid-cols-2 lg:gap-x-14">
           {studioFeatures.map((f) => (
             <li key={f.title}>
               <span aria-hidden className="bg-spectrum block h-0.5 w-10 rounded-full" />
@@ -344,14 +338,14 @@ export function Studio() {
           <div className="grid gap-10 rounded-3xl bg-paper-deep p-7 sm:p-10 lg:grid-cols-12 lg:items-center lg:p-12">
             <div className="lg:col-span-6">
               <h3 className="text-[clamp(1.75rem,3vw,2.5rem)] leading-tight tracking-[-0.035em]">
-                Video editing with 24-hour delivery.
+                Best Social Media Agency with Guaranteed results
               </h3>
               <p className="mt-3 max-w-md text-ink/60">
-                A dedicated editing team on your project — premium quality, priced better than your
-                freelancer.
+                As a leading social media marketing company in Bengaluru, we deliver guaranteed
+                results through:
               </p>
               <Link href="/contact" className="btn btn-primary group mt-7">
-                Start a free trial
+                Get Started
                 <ArrowUpRight
                   className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   aria-hidden
@@ -370,6 +364,27 @@ export function Studio() {
             </ul>
           </div>
         </Reveal>
+      </div>
+    </section>
+  )
+}
+
+/* ── Our services — the six service areas listed on the live site ──────── */
+
+export function OurServices() {
+  return (
+    <section aria-labelledby="our-services-title" className="section">
+      <div className="container-page">
+        <SectionHead id="our-services-title" eyebrow="How We Work" title="Our Services" />
+        <ul className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+          {solutions.map((s) => (
+            <li key={s.number} className="flex flex-col bg-white p-6 sm:p-8">
+              <span className="font-heading text-sm font-semibold text-brand">{s.number}</span>
+              <h3 className="mt-4 text-xl tracking-[-0.02em]">{s.title}</h3>
+              <p className="mt-2 text-[0.95rem] leading-relaxed text-ink/60">{s.description}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )

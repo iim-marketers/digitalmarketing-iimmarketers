@@ -14,7 +14,6 @@ export type Post = {
   category: { slug: string; name: string }
   tags: { slug: string; name: string }[]
   cover: { src: string; width: number; height: number }
-  readingMinutes: number
   body: PostBlock[]
 }
 
@@ -40,19 +39,14 @@ export const posts: Post[] = [
     slug: "why-clean-well-edited-videos-are-essential",
     legacySlug: "a-complete-guide-to-business-insurance-perfect",
     title: "Why Clean and Well-Edited Videos Are Essential for Online Success",
-    excerpt:
-      "In the digital age, videos are one of the most effective ways to engage your audience — but not just any video will do. Here’s why clean editing decides your reach.",
+    excerpt: "In the digital age, videos are one of the most effective ways to engage your audience. But not just any video will do—clean, well-edited videos are essential for maintaining viewer interest and achieving better reach.",
     date: "2025-03-16",
     category: digitalMarketing,
     tags: [tag.business, tag.digitalMarketing],
     cover: { src: "/images/blog/clean-videos.webp", width: 1000, height: 563 },
-    readingMinutes: 3,
     body: [
-      {
-        type: "p",
-        text: "In the digital age, videos are one of the most effective ways to engage your audience. But not just any video will do — clean, well-edited videos are essential for maintaining viewer interest and achieving better reach.",
-      },
-      { type: "h2", text: "First impressions matter" },
+      { type: "p", text: "In the digital age, videos are one of the most effective ways to engage your audience. But not just any video will do—clean, well-edited videos are essential for maintaining viewer interest and achieving better reach." },
+      { type: "h2", text: "First Impressions Matter" },
       {
         type: "list",
         items: [
@@ -60,124 +54,94 @@ export const posts: Post[] = [
           "Clean editing enhances professionalism and builds trust.",
         ],
       },
-      { type: "h2", text: "The role of clarity and quality" },
+      { type: "h2", text: "The Role of Clarity and Quality" },
       {
         type: "list",
         items: [
           "Crisp visuals and smooth transitions keep viewers engaged.",
-          "Audio quality and background-noise reduction are equally important.",
+          "Audio quality and background noise reduction are equally important.",
         ],
       },
-      { type: "h2", text: "Impact on social media reach" },
+      { type: "h2", text: "Impact on Social Media Reach" },
       {
         type: "list",
         items: [
-          "Algorithms favour videos with higher watch time and engagement.",
+          "Algorithms favor videos with higher watch times and engagement.",
           "Well-produced content is more likely to be shared and recommended.",
         ],
       },
-      { type: "h2", text: "How to achieve clean video editing" },
+      { type: "h2", text: "How to Achieve Clean Video Editing" },
       {
         type: "list",
         items: [
           "Use high-quality footage from the start.",
-          "Master essential editing techniques like cuts, transitions and colour correction.",
-        ],
-      },
-      {
-        type: "images",
-        images: [
-          { src: "/images/blog/inline-03.webp", alt: "Editing timeline on a monitor" },
-          { src: "/images/blog/inline-05.webp", alt: "Video production workspace" },
+          "Master essential editing techniques, like cuts, transitions, and color correction.",
         ],
       },
       { type: "h2", text: "Conclusion" },
-      {
-        type: "p",
-        text: "Investing in clean and professional video editing not only boosts your credibility but also increases your chances of reaching a wider audience.",
-      },
+      { type: "p", text: "Investing in clean and professional video editing not only boosts your credibility but also increases your chances of reaching a wider audience." },
     ],
   },
   {
     slug: "eye-catching-videos-with-stunning-color-grading",
     legacySlug: "how-to-create-eye-catching-videos-with-stunning-color-grading",
     title: "How to Create Eye-Catching Videos with Stunning Color Grading",
-    excerpt:
-      "Eye-catching videos are more likely to go viral and build a strong connection with the audience. Stunning colour grading is one of the biggest levers you have.",
+    excerpt: "Eye-catching videos are more likely to go viral and build a strong connection with the audience. One of the most important elements of achieving this is stunning color grading.",
     date: "2025-01-17",
     category: digitalMarketing,
     tags: [tag.business, tag.security, tag.technology],
     cover: { src: "/images/blog/eye-catching-videos.webp", width: 1000, height: 667 },
-    readingMinutes: 3,
     body: [
-      {
-        type: "p",
-        text: "Eye-catching videos are more likely to go viral and build a strong connection with the audience. One of the most important elements of achieving this is stunning colour grading.",
-      },
-      { type: "h2", text: "Understanding the basics" },
+      { type: "p", text: "Eye-catching videos are more likely to go viral and build a strong connection with the audience. One of the most important elements of achieving this is stunning color grading." },
+      { type: "h2", text: "Understanding the Basics" },
       {
         type: "list",
         items: [
-          "Colour correction vs. colour grading: what’s the difference?",
-          "The importance of balanced and natural colours.",
+          "Color correction vs. color grading: What’s the difference?",
+          "Importance of balanced and natural colors.",
         ],
       },
-      { type: "h2", text: "Creating visual harmony" },
+      { type: "h2", text: "Creating Visual Harmony" },
       {
         type: "list",
         items: [
-          "How to choose the right colour palette for your niche.",
-          "Harmonising colours to create visual flow.",
+          "How to choose the right color palette for your niche.",
+          "Harmonizing colors to create visual flow.",
         ],
       },
-      { type: "h2", text: "Colour grading for different platforms" },
+      { type: "h2", text: "Color Grading for Different Platforms" },
       {
         type: "list",
         items: [
-          "YouTube vs. Instagram: adapting grading techniques.",
-          "Ensuring colours look great on mobile and desktop devices.",
+          "YouTube vs. Instagram: Adapting grading techniques.",
+          "Ensuring colors look great on mobile and desktop devices.",
         ],
       },
-      { type: "h2", text: "Tips and tricks" },
+      { type: "h2", text: "Tips and Tricks" },
       {
         type: "list",
         items: [
-          "Start with colour correction to balance footage.",
+          "Start with color correction to balance footage.",
           "Use LUTs (Look-Up Tables) to speed up the grading process.",
           "Test your graded video on multiple devices.",
         ],
       },
-      {
-        type: "images",
-        images: [
-          { src: "/images/blog/inline-04.webp", alt: "Colour grading wheels in an editor" },
-          { src: "/images/blog/inline-03.webp", alt: "Editing timeline on a monitor" },
-        ],
-      },
       { type: "h2", text: "Conclusion" },
-      {
-        type: "p",
-        text: "Stunning colour grading not only makes your video look professional but also grabs viewers’ attention and keeps them engaged. Master this skill to stand out in a sea of content.",
-      },
+      { type: "p", text: "Stunning color grading not only makes your video look professional but also grabs viewers’ attention and keeps them engaged. Master this skill to stand out in a sea of content." },
     ],
   },
   {
     slug: "power-of-color-grading-in-video-editing",
     legacySlug: "the-power-of-color-grading-in-video-editing-transform-your-content",
     title: "The Power of Color Grading in Video Editing: Transform Your Content",
-    excerpt:
-      "Colour grading is more than adding a filter — it sets the mood, enhances the story and captures attention. Here’s how it elevates your content.",
+    excerpt: "Color grading is more than just adding a filter to your video—it’s about setting the mood, enhancing the story, and capturing your audience’s attention. In this blog, we’ll explore how color grading can elevate your content and why it’s essential for video success.",
     date: "2024-01-17",
     category: digitalMarketing,
     tags: [tag.business, tag.digitalMarketing, tag.web],
     cover: { src: "/images/blog/color-grading-power.webp", width: 1000, height: 625 },
-    readingMinutes: 4,
     body: [
-      {
-        type: "p",
-        text: "Colour grading is more than just adding a filter to your video — it’s about setting the mood, enhancing the story and capturing your audience’s attention. In this post, we explore how colour grading can elevate your content and why it’s essential for video success.",
-      },
-      { type: "h2", text: "Why colour grading matters" },
+      { type: "p", text: "Color grading is more than just adding a filter to your video—it’s about setting the mood, enhancing the story, and capturing your audience’s attention. In this blog, we’ll explore how color grading can elevate your content and why it’s essential for video success." },
+      { type: "h2", text: "Why Color Grading Matters" },
       {
         type: "list",
         items: [
@@ -186,43 +150,33 @@ export const posts: Post[] = [
           "Sets the mood and tone, making your content more immersive.",
         ],
       },
-      { type: "h2", text: "Techniques to master" },
+      { type: "h2", text: "Techniques to Master" },
       {
         type: "list",
         items: [
           "Adjusting contrast and brightness for a balanced look.",
-          "Using colour wheels to correct and stylise footage.",
-          "Matching shots for a consistent colour palette.",
+          "Using color wheels to correct and stylize footage.",
+          "Matching shots for a consistent color palette.",
         ],
       },
-      {
-        type: "images",
-        images: [
-          { src: "/images/blog/inline-03.webp", alt: "Editing timeline on a monitor" },
-          { src: "/images/blog/inline-05.webp", alt: "Video production workspace" },
-        ],
-      },
-      { type: "h2", text: "Tools of the trade" },
+      { type: "h2", text: "Tools of the Trade" },
       {
         type: "list",
         items: [
-          "DaVinci Resolve, Adobe Premiere Pro and Final Cut Pro.",
-          "Choosing the right tool for your needs and budget.",
+          "DaVinci Resolve, Adobe Premiere Pro, and Final Cut Pro.",
+          "Tips on choosing the right tool for your needs.",
         ],
       },
-      { type: "h2", text: "Real-life examples" },
+      { type: "h2", text: "Real-Life Examples" },
       {
         type: "list",
         items: [
-          "How blockbuster movies use colour grading to enhance storytelling.",
-          "Case study: how colour grading improved engagement for a YouTuber.",
+          "How blockbuster movies use color grading to enhance storytelling.",
+          "Case study: How color grading improved engagement for a YouTuber.",
         ],
       },
       { type: "h2", text: "Conclusion" },
-      {
-        type: "p",
-        text: "Colour grading is a powerful tool that can drastically change the look and feel of your videos. Investing time in this skill will make your content stand out and increase your reach.",
-      },
+      { type: "p", text: "Color grading is a powerful tool that can drastically change the look and feel of your videos. Investing time in learning this skill will undoubtedly make your content stand out and increase your reach." },
     ],
   },
 ]

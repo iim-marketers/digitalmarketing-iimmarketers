@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Check, Star } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 
 import {
   Accordion,
@@ -22,23 +22,18 @@ export function Testimonials() {
       <div className="container-page">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="eyebrow">Client stories</p>
+            <p className="eyebrow">Our Clients Feedback</p>
             <h2 id="testimonials-title" className="title mt-5 max-w-2xl">
-              Don’t just take our word for it.
+              Testimonial from Clients
             </h2>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="font-heading text-6xl leading-none font-semibold tracking-[-0.05em]">
-              5.0
+          <div className="flex items-center gap-3">
+            <span className="flex text-amber" aria-hidden>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="size-5 fill-current" />
+              ))}
             </span>
-            <span className="flex flex-col gap-1">
-              <span className="flex text-amber" aria-hidden>
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="size-4 fill-current" />
-                ))}
-              </span>
-              <span className="text-sm text-ink/55">Average Google rating</span>
-            </span>
+            <span className="text-sm font-medium text-ink/70">5-Star Rated on Google</span>
           </div>
         </div>
 
@@ -108,36 +103,22 @@ export function Testimonials() {
 
 /* ── Why us + FAQ ──────────────────────────────────────────────────────── */
 
-const reasons = [
-  "Dedicated account managers and editors on your project",
-  "No contracts or hidden clauses — flexible payments",
-  "Money-back guarantee and 100% satisfaction promise",
-  "Cheaper than hiring an unreliable freelancer",
-];
-
 export function WhyUsFaq() {
   return (
     <section aria-labelledby="why-title" className="section bg-paper-deep">
       <div className="container-page grid gap-14 lg:grid-cols-12 lg:gap-16">
         <div className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
-          <p className="eyebrow">Why IIM Marketers</p>
-          <h2 id="why-title" className="title mt-2">
-            Questions, answered.
+          <h2 id="why-title" className="title">
+            Why should you choose us?
           </h2>
-          <p className="mt-4 max-w-md text-lg leading-relaxed text-ink/60">
-            Top-notch delivery at a fair price — led by an Ex-Director of Kantar
-            Europe and an Ex-Director of EY.
+          <p className="mt-5 max-w-md text-lg leading-relaxed text-ink/60">
+            Top notch video editing service delivery with dedicated account
+            managers and video editors assigned to your project at a cost that
+            will be cheaper than hiring an unreliable freelancer. No contracts
+            and hidden clauses, flexible payment options. Our management team
+            are big names in the world of marketing &amp; advertising with Ex
+            Director Kantar Europe and Ex Director EY on our management team.
           </p>
-          <ul className="mt-6 flex flex-col gap-3">
-            {reasons.map((r) => (
-              <li key={r} className="flex items-start gap-3 text-ink/80">
-                <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-brand text-white">
-                  <Check className="size-3" aria-hidden strokeWidth={3} />
-                </span>
-                {r}
-              </li>
-            ))}
-          </ul>
         </div>
 
         <div className="lg:col-span-7">
@@ -176,16 +157,15 @@ export function LatestInsights() {
       <div className="container-page">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="eyebrow">From the blog</p>
-            <h2 id="insights-title" className="title mt-5">
-              Ideas worth stealing.
+            <h2 id="insights-title" className="title">
+              Our Latest Insights
             </h2>
           </div>
           <Link
             href="/blog"
             className="inline-flex items-center gap-1.5 font-medium text-ink underline decoration-ink/20 underline-offset-4 transition-colors hover:decoration-ink"
           >
-            All articles <ArrowRight className="size-4" aria-hidden />
+            View all Blogs <ArrowRight className="size-4" aria-hidden />
           </Link>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

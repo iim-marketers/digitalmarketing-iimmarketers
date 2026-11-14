@@ -76,17 +76,12 @@ export function LeadForm({
       />
 
       <div className={cn("grid sm:grid-cols-2", compact ? "gap-3.5" : "gap-4")}>
-        <Field
-          id={`${id}-name`}
-          label="Your name"
-          error={err.name}
-          className={compact ? "sm:col-span-2" : undefined}
-        >
+        <Field id={`${id}-name`} label="Your name" error={err.name}>
           <Input
             id={`${id}-name`}
             name="name"
             autoComplete="name"
-            placeholder="Your name"
+            placeholder="Your Name"
             required
             aria-invalid={!!err.name}
             className={inputCls}
@@ -98,7 +93,7 @@ export function LeadForm({
             name="email"
             type="email"
             autoComplete="email"
-            placeholder="you@company.com"
+            placeholder="Email Address"
             required
             aria-invalid={!!err.email}
             className={inputCls}
@@ -110,22 +105,20 @@ export function LeadForm({
             name="phone"
             type="tel"
             autoComplete="tel"
-            placeholder="+91 98765 43210"
+            placeholder="Phone Number"
             required
             aria-invalid={!!err.phone}
             className={inputCls}
           />
         </Field>
-        {variant === "full" ? (
-          <Field id={`${id}-subject`} label="Subject">
-            <Input
-              id={`${id}-subject`}
-              name="subject"
-              placeholder="e.g. Lead generation for my clinic"
-              className={inputCls}
-            />
-          </Field>
-        ) : null}
+        <Field id={`${id}-subject`} label="Subject">
+          <Input
+            id={`${id}-subject`}
+            name="subject"
+            placeholder="Subject"
+            className={inputCls}
+          />
+        </Field>
       </div>
 
       <Field id={`${id}-message`} label="Message" error={err.message} optional>
@@ -133,7 +126,7 @@ export function LeadForm({
           id={`${id}-message`}
           name="message"
           rows={compact ? 2 : 5}
-          placeholder="Tell us about your business and goals"
+          placeholder="Write a Message"
           className={cn(inputCls, "h-auto py-3", compact ? "min-h-20" : "min-h-24")}
         />
       </Field>
@@ -154,11 +147,8 @@ export function LeadForm({
         ) : (
           <Send data-icon="inline-start" />
         )}
-        {pending ? "Sending…" : (submitLabel ?? "Send message")}
+        {pending ? "Sending…" : (submitLabel ?? "Send a message")}
       </Button>
-      <p className="text-center text-xs text-muted-foreground">
-        We reply within 24 hours. Your details stay private.
-      </p>
     </form>
   )
 }

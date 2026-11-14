@@ -17,11 +17,11 @@ export const siteConfig = {
     secondary: { label: "+91 99367 84019", href: "tel:+919936784019" },
   },
   footerBlurb:
-    "At IIM Marketers, we redefine digital success through our comprehensive digital marketing services. Choose us for an all-in-one business solution that encompasses IT, Marketing, AI-based Automation and Security — propelling your business to new heights in the digital realm.",
+    "At IIM Marketers, we redefine digital success through our comprehensive digital marketing services. As a premier digital marketing service provider, we bring expertise and innovation to the forefront, ensuring your brand stands out in the online landscape. Choose us for your all-in-one business solution that encompasses IT, Marketing, AI based Automation, Security – propelling your business to new heights in the digital realm.",
   affiliates: [
-    { region: "United Kingdom", name: "Dukes for You, Brighton & Hove" },
-    { region: "India", name: "Estrelligent Technology Pvt Ltd" },
-    { region: "Netherlands", name: "Sound Board" },
+    { label: "UK Affiliate", name: "Dukes for You, Brighton & Hove" },
+    { label: "India Affiliate", name: "Estrelligent Technology Pvt Ltd" },
+    { label: "Netherlands Affiliate", name: "Sound Board" },
   ],
 } as const
 
@@ -36,13 +36,13 @@ export const heroHighlights = [
   "Trusted by 150+ satisfied brands",
   "Performance-driven digital marketing solutions",
   "ROI-centric experts you can count on",
-  "Innovative strategies to maximise campaign success",
+  "Innovative strategies to maximize campaign success",
 ]
 
 export const stats = [
-  { value: 9, suffix: "+", label: "Years of proven track record" },
+  { value: 9, suffix: " years", label: "Proven track record" },
   { value: 2, suffix: " lac", label: "Leads generated" },
-  { value: 24, suffix: " hrs", label: "Minimum turnaround time" },
+  { value: 24, suffix: " hours", label: "Minimum TAT" },
   { value: 150, suffix: "+", label: "Projects completed" },
 ]
 
@@ -57,157 +57,136 @@ export const capabilities = [
 
 export const coreServices = [
   {
-    title: "Social Media Marketing",
-    subtitle: "with Advanced Video Strategy",
+    title: "Social Media Marketing (SMM) with Advanced Video Strategy",
     icon: "Megaphone",
     description:
-      "Build brand awareness and foster engagement across Instagram, Facebook, LinkedIn and more — powered by scroll-stopping video.",
+      "As the best social media marketing company in Kolkata, we build brand awareness and foster engagement across platforms like Instagram, Facebook, LinkedIn, and more.",
   },
   {
-    title: "Search Engine Optimization",
-    subtitle: "On-page, off-page & technical",
+    title: "Search Engine Optimization (SEO)",
     icon: "Search",
     description:
-      "Enhance your website’s visibility on Google with on-page, off-page and technical SEO strategies that compound over time.",
+      "Enhance your website’s visibility on Google with on-page, off-page, and technical SEO strategies from a leading SEO agency in Kolkata.",
   },
   {
-    title: "Pay-Per-Click Advertising",
-    subtitle: "Google, YouTube & paid social",
+    title: "Pay-Per-Click (PPC) Advertising",
     icon: "MousePointerClick",
     description:
-      "Drive instant traffic and leads through Google Ads, YouTube Ads and paid social campaigns tuned for cost-per-lead.",
+      "Drive instant traffic and leads through Google Ads, YouTube Ads, and paid social media campaigns with the best PPC company in Kolkata.",
   },
   {
     title: "Website Design & Development",
-    subtitle: "Fast, mobile-first, SEO-ready",
     icon: "MonitorSmartphone",
     description:
-      "We create fast, mobile-friendly and SEO-optimised websites that reflect your brand and drive conversions.",
+      "We create fast, mobile-friendly, and SEO-optimized websites that reflect your brand and drive conversions.",
   },
   {
     title: "Influencer & Video Marketing",
-    subtitle: "Content that converts",
     icon: "Clapperboard",
     description:
-      "We produce valuable, search-optimised content and creator collaborations that inform, engage and attract your ideal customers.",
+      "As a premier content marketing company in Kolkata, we produce valuable, search-optimized content that informs, engages, and attracts your ideal customers.",
   },
   {
     title: "Email Marketing & Automation",
-    subtitle: "Nurture & retain",
     icon: "Mail",
     description:
       "Nurture leads and boost retention with high-converting email sequences and automation workflows.",
   },
   {
     title: "Brand Strategy & Design",
-    subtitle: "Identity & positioning",
     icon: "Palette",
     description:
-      "Craft a unique brand identity with logo design, visual branding and sharp market positioning.",
+      "Craft a unique brand identity with logo design, visual branding, and market positioning, solidifying our reputation as the best advertising agency in Kolkata.",
   },
   {
     title: "Analytics & Performance Tracking",
-    subtitle: "Measure every move",
     icon: "ChartNoAxesCombined",
     description:
-      "Data-driven insights and transparent reporting to optimise campaigns for maximum ROI.",
+      "Measure every move with data-driven insights and reports to optimize campaigns for maximum ROI.",
   },
 ] as const
 
 export const solutions = [
   {
     number: "01",
-    symbol: "Md",
     title: "Media Solutions",
     description:
-      "Strategic media planning and data-driven execution for strong brand impact via social media.",
+      "Strategic media planning & data-driven execution for strong brand impact via social media.",
   },
   {
     number: "02",
-    symbol: "Br",
     title: "Brand Solutions",
     description: "Build a brand that stands out with strategic identity and design.",
   },
   {
     number: "03",
-    symbol: "Tc",
     title: "Tech Solutions",
     description:
-      "Tech-driven solutions for seamless operations, including e-commerce website development.",
+      "Tech-driven solutions for seamless operations, with e-commerce website development.",
   },
   {
     number: "04",
-    symbol: "Pr",
     title: "PR & Media Coverage",
     description: "Strengthening brand credibility with strategic PR and media coverage.",
   },
   {
     number: "05",
-    symbol: "Fp",
     title: "Films & Photography",
     description:
-      "A video production company creating compelling visuals that captivate and connect.",
+      "A Video production company creating compelling visuals that captivate and connect",
   },
   {
     number: "06",
-    symbol: "Rs",
     title: "Research Solutions",
     description:
       "Market research services delivering insights to drive strategic business decisions.",
   },
 ]
 
-export const processSteps = [
-  {
-    title: "Analyse",
-    description: "Our team of IIM graduates analyses your business, market and competitors.",
-  },
-  {
-    title: "Strategise",
-    description:
-      "We create the right business strategy and positioning statement for your business.",
-  },
-  {
-    title: "Review & Perfect",
-    description: "We make revisions until you’re 100% satisfied with the plan and creatives.",
-  },
-  {
-    title: "Deliver & Shine",
-    description: "We launch campaigns that actually deliver your results — and keep optimising.",
-  },
+/** "How It Works" — the live site only names steps 3 and 4. */
+export const processSteps: { title?: string; description: string }[] = [
+  { description: "Our team of IIM grads analyze your business" },
+  { description: "We create the right business strategy, positioning statement for your business" },
+  { title: "Review & Perfect", description: "We make revisions until you’re 100% satisfied." },
+  { title: "Deliver & Shine", description: "Create the campaigns that actually deliver your results" },
 ]
 
 export const studioFeatures = [
   {
     title: "Innovative Branding & Marketing",
     description:
-      "Creative branding solutions and impactful social media strategies that drive engagement, foster business growth and enhance your brand’s online presence.",
+      "As a leading digital marketing company in Bengaluru, we specialize in creative branding solutions and impactful social media strategies that drive engagement, foster business growth, and enhance your brand’s online presence. Our expertise as a top digital marketing agency in Bengaluru ensures that your brand not only captures attention but also achieves measurable results in the digital landscape.",
   },
   {
     title: "Tailored Strategies for Growth",
     description:
-      "Customised strategies aligned with your brand’s vision. By leveraging data, creativity and market expertise, we build campaigns that deliver measurable results.",
+      "As a leading digital marketing company in Bengaluru, we specialize in crafting customized strategies that align with your brand’s vision and goals. By leveraging data, creativity, and market expertise, we create impactful campaigns that drive engagement, foster business growth, and enhance your brand’s online presence. Our commitment to excellence positions us as a top digital marketing agency in Bengaluru, dedicated to delivering measurable results.",
   },
   {
     title: "Performance-Driven Insights",
     description:
-      "We blend creative thinking with strategic planning to boost visibility, optimise campaigns and maximise long-term ROI.",
+      "At IIM Marketers, a leading digital marketing company in Bengaluru, we help brands achieve real, sustainable growth. By seamlessly blending creative thinking with strategic planning, we boost visibility, optimize campaigns, and maximize long-term ROI.",
+  },
+  {
+    title: "No 1 in lead generation & Paid Campaigns",
+    description:
+      "As a leading advertising company in Kolkata, we specialize in guaranteed lead generation and high-converting paid campaigns. From clinics and schools to service sector companies, we deliver measurable results that drive business growth.",
   },
 ]
 
 export const socialGuarantees = [
   "Top-tier editing with precision cuts and seamless transitions",
   "Dynamic motion graphics and perfectly synced sound engineering",
-  "Perfectly synced music & sound design",
   "Fast turnaround times and custom revisions",
+  "Perfectly synced music & sound engineering",
   "A 100% satisfaction guarantee",
 ]
 
 export const aboutFeatures = [
   { title: "Best quality support", icon: "Headset" },
-  { title: "Money-back guarantee", icon: "BadgeIndianRupee" },
+  { title: "Money back guarantee", icon: "BadgeIndianRupee" },
   { title: "Serve the best", icon: "Sparkles" },
-  { title: "Trusted professionals", icon: "ShieldCheck" },
+  { title: "Trusted Professionals", icon: "ShieldCheck" },
 ] as const
 
 export const testimonials = [
@@ -216,65 +195,59 @@ export const testimonials = [
     role: "Host of The ESG Show",
     image: "/images/testimonials/michael-baxter.webp",
     quote:
-      "I had an outstanding experience with IIM Marketers, who helped us transform our lead generation and social media presence. Their lead generation strategy is nothing short of exceptional — highly targeted, results-driven and tailored to our business goals. We saw a significant increase in qualified leads, directly boosting our sales pipeline.",
+      "I had an outstanding experience with IIM Marketers, who helped us transform our lead generation and social media presence. Their lead generation strategy is nothing short of exceptional—highly targeted, results-driven, and tailored to our business goals. We saw a significant increase in qualified leads, directly boosting our sales pipeline. If you’re looking for a digital marketing partner that excels in lead generation and social media strategy, IIM Marketers is the clear choice. Highly recommended!",
   },
   {
     name: "Arunendu Chakraborty",
     role: "Channel Partner, Melbourne AUS",
     image: "/images/testimonials/arunendu-chakraborty.webp",
     quote:
-      "Exceptional service! IIM Marketers transformed our digital presence with their complete marketing solutions. Their expertise in SEO skyrocketed our visibility, and the personalised approach to email marketing brought remarkable results. A dedicated team that delivers on their promises.",
+      "Exceptional service! IIM Marketers transformed our digital presence with their complete marketing solutions. Their expertise in SEO skyrocketed our visibility, and the personalized approach to email marketing brought remarkable results. A dedicated team that delivers on their promises – highly recommend for anyone seeking digital success!",
   },
   {
     name: "Habib Reza",
     role: "Peak Studio",
     image: "/images/testimonials/habib-reza.webp",
     quote:
-      "IIM Marketers has been a game-changer for our business! Their expertise in SEO has significantly boosted our online visibility, bringing in more organic traffic than ever before. Kudos to the team for their exceptional work!",
+      "IIM Marketers has been a game-changer for our business! Their expertise in SEO has significantly boosted our online visibility, bringing in more organic traffic than ever before. Kudos to the IIM Marketers team for their exceptional work!",
   },
   {
     name: "Peek Thakul",
     role: "ESG Discourse",
     image: "/images/testimonials/peek-thakul.webp",
     quote:
-      "Their team demonstrated exceptional expertise in crafting a visually stunning and highly functional website and mobile app tailored to our needs. What truly sets IIM Marketers apart is their strategic approach — from SEO and social media to targeted campaigns, our online presence and engagement grew significantly.",
+      "I recently had the pleasure of working with IIM Marketers for website and app development, along with their digital marketing services, and I couldn’t be more impressed. Their team demonstrated exceptional expertise in crafting a visually stunning and highly functional website and mobile app tailored to our business needs. What truly sets IIM Marketers apart is their strategic approach to digital marketing. From SEO and social media management to targeted campaigns, their efforts resulted in a significant boost in our online presence and customer engagement.",
   },
   {
     name: "Kenny",
-    role: "Marketing Head, Praxis",
+    role: "Marketing Head of Praxis",
     image: "/images/testimonials/kenny.webp",
     quote:
-      "We’ve been working with IIM Marketers for a while now, and the results speak for themselves. Their PPC campaigns have been instrumental in driving targeted leads to our business. A reliable partner in our digital marketing journey.",
+      "We’ve been working with IIM Marketers for a while now, and the results speak for themselves. Their PPC campaigns have been instrumental in driving targeted leads to our business. Overall, IIM Marketers has proven to be a reliable partner in our digital marketing journey.",
   },
 ]
 
+/** "Our Completed Projects" — wording taken from the result banners on the live site. */
 export const caseStudies = [
   {
     client: "Apollo 24|7",
-    result: "10,000 footfall in 3 months",
     metric: "10,000",
-    metricLabel: "footfall",
-    timeline: "3 months",
-    brief: "Event promotion",
-    detail: "Event promotion and on-ground lead generation campaign.",
+    text: "footfall in 3 months in an event",
     photo: { src: "/images/cases/apollo-event.webp", width: 1177, height: 1337, position: "60% 50%" },
+    photoAlt: "Apollo 24|7 event",
     /** Media split: photo column vs brand panel (CSS grid-template-columns). */
     mediaColumns: "5fr 6fr",
-    photoAlt: "Apollo 24|7 brand ambassador at the promotion event",
     logo: "/images/cases/apollo-logo.webp",
     brandColor: "#ef5a23",
   },
   {
     client: "nalva",
-    result: "100+ orders per day within 3 months",
+    lead: "Profitable ecommerce with",
     metric: "100+",
-    metricLabel: "orders per day",
-    timeline: "3 months",
-    brief: "E-commerce launch",
-    detail: "Profitable e-commerce launch for Vanitha Textiles — website, ads and content.",
+    text: "orders per day within 3 months of launch",
     photo: { src: "/images/cases/nalva-launch.webp", width: 1941, height: 810, position: "40% 50%" },
+    photoAlt: "Vanitha Textiles proudly launched its new website www.nalva.in",
     mediaColumns: "7fr 4fr",
-    photoAlt: "Vanitha Textiles team launching the nalva.in website",
     logo: "/images/cases/nalva-logo.webp",
     brandColor: "#1fb0bc",
   },
@@ -304,27 +277,27 @@ export const team = [
 export const faqs = [
   {
     q: "What services does IIM Marketers offer?",
-    a: "We offer a full suite of digital marketing services including SEO, social media marketing, PPC advertising, content marketing, email marketing, website design and branding strategies tailored to your business goals.",
+    a: "We offer a full suite of digital marketing services including SEO, social media marketing, PPC advertising, content marketing, email marketing, website design, and branding strategies tailored to your business goals.",
   },
   {
     q: "How is IIM Marketers different from other digital marketing agencies?",
-    a: "We combine data-driven strategies with creative execution to deliver measurable results. Our team focuses on performance, ROI, and aligning every campaign with your brand’s unique identity and goals.",
+    a: "At IIM Marketers, we combine data-driven strategies with creative execution to deliver measurable results. Our team focuses on performance, ROI, and aligning every campaign with your brand’s unique identity and goals.",
   },
   {
     q: "Do you work with businesses of all sizes?",
-    a: "Yes! We work with startups, small businesses and large enterprises. Our strategies are scalable and customised to fit your budget, industry and specific growth needs.",
+    a: "Yes! We work with startups, small businesses, and large enterprises. Our strategies are scalable and customized to fit your budget, industry, and specific growth needs.",
   },
   {
     q: "How long before we see results from digital marketing?",
     a: "It depends on the service. SEO can take 3–6 months for noticeable impact, while PPC and social media campaigns may show results within weeks. We focus on building sustainable, long-term growth.",
   },
   {
-    q: "What industries do you specialise in?",
-    a: "We’ve worked with brands across e-commerce, healthcare, education, tech, hospitality, fashion, real estate and more. Whatever your niche, we tailor our strategies to your market.",
+    q: "What industries do you specialize in?",
+    a: "We’ve worked with brands across e-commerce, healthcare, education, tech, hospitality, fashion, real estate, and more. Whatever your niche, we tailor our strategies to meet your market demands.",
   },
   {
     q: "Can you help with brand strategy and design?",
-    a: "Absolutely. In addition to marketing, we offer branding, logo design and website development services to help you establish a strong, professional digital identity.",
+    a: "Absolutely. In addition to marketing, we offer branding, logo design, and website development services to help you establish a strong, professional digital identity.",
   },
 ]
 

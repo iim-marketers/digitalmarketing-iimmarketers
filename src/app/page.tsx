@@ -1,6 +1,6 @@
 import { Hero } from "@/components/home/hero"
 import { TrustedBrands } from "@/components/home/trust"
-import { CaseStudies, CoreServices, HowItWorks, Studio } from "@/components/home/services"
+import { CaseStudies, CoreServices, HowItWorks, OurServices, Studio } from "@/components/home/services"
 import { LatestInsights, Testimonials, WhyUsFaq } from "@/components/home/engage"
 import { faqs, siteConfig } from "@/lib/site"
 
@@ -42,6 +42,7 @@ export default function HomePage() {
       <HowItWorks />
       <Studio />
       <Testimonials />
+      <OurServices />
       <WhyUsFaq />
       <LatestInsights />
     </>

@@ -72,14 +72,14 @@ export function HeaderShell({ pathname }: { pathname: string | null }) {
 
         <div className="flex items-center gap-2">
           <a
-            href={siteConfig.phones.primary.href}
+            href={siteConfig.phones.secondary.href}
             className="hidden items-center gap-2 px-3 text-sm text-ink/65 transition-colors hover:text-ink xl:inline-flex"
           >
             <Phone className="size-4" aria-hidden />
-            {siteConfig.phones.primary.label}
+            {siteConfig.phones.secondary.label}
           </a>
           <Link href="/contact" className="btn btn-primary group hidden h-11 px-5 sm:inline-flex">
-            Get started
+            Get Started
             <ArrowRight
               className="size-4 transition-transform group-hover:translate-x-0.5"
               aria-hidden
@@ -130,9 +130,9 @@ export function HeaderShell({ pathname }: { pathname: string | null }) {
                 </ul>
               </nav>
               <div className="flex flex-col gap-3 p-5 text-sm text-ink/70">
-                <a href={siteConfig.phones.primary.href} className="flex items-center gap-3">
+                <a href={siteConfig.phones.secondary.href} className="flex items-center gap-3">
                   <Phone className="size-4" aria-hidden />
-                  {siteConfig.phones.primary.label}
+                  {siteConfig.phones.secondary.label}
                 </a>
                 <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-3">
                   <Mail className="size-4" aria-hidden />
@@ -140,7 +140,7 @@ export function HeaderShell({ pathname }: { pathname: string | null }) {
                 </a>
                 <SheetClose asChild>
                   <Link href="/contact" className="btn btn-primary mt-3 w-full">
-                    Get a free growth plan
+                    Get Started
                   </Link>
                 </SheetClose>
               </div>

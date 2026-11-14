@@ -1,76 +1,75 @@
 import type { Metadata } from "next"
 
 import { LegalPage, type LegalSection } from "@/components/site/legal-page"
-import { siteConfig } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How IIM Marketers collects, uses and protects your personal information.",
+  description: "Privacy Policy of IIM Marketers.",
   alternates: { canonical: "/privacy-policy" },
 }
 
-// NOTE: Adapted from the original site's WordPress privacy template. Have it reviewed before launch.
+// Copied word for word from the live site's privacy policy (the WordPress default template,
+// without its "Suggested text:" labels). It describes WordPress comments and logins, which this
+// site does not have — have it reviewed before launch.
 const sections: LegalSection[] = [
   {
     heading: "Who we are",
+    paragraphs: ["Our website address is: https://digitalmarketing.iimmarketers.com/."],
+  },
+  {
+    heading: "Comments",
     paragraphs: [
-      `${siteConfig.name} is a digital marketing agency. Our website address is ${siteConfig.url}. You can reach us at ${siteConfig.email}.`,
+      "When visitors leave comments on the site we collect the data shown in the comments form, and also the visitor’s IP address and browser user agent string to help spam detection.",
+      "An anonymized string created from your email address (also called a hash) may be provided to the Gravatar service to see if you are using it. The Gravatar service privacy policy is available here: https://automattic.com/privacy/. After approval of your comment, your profile picture is visible to the public in the context of your comment.",
     ],
   },
   {
-    heading: "Information we collect",
+    heading: "Media",
     paragraphs: [
-      "When you submit a form on this website we collect the details you provide — typically your name, email address, phone number and message — so we can respond to your enquiry.",
-      "When you subscribe to our newsletter we collect your email address and your consent to receive it.",
-      "Like most websites, our hosting provider may automatically log technical information such as your IP address, browser type and the pages you visit, to keep the site secure and reliable.",
+      "If you upload images to the website, you should avoid uploading images with embedded location data (EXIF GPS) included. Visitors to the website can download and extract any location data from images on the website.",
     ],
   },
   {
     heading: "Cookies",
     paragraphs: [
-      "This website uses only the cookies needed for it to function. If we add analytics or advertising tools in future, we will update this policy and, where required, ask for your consent first.",
+      "If you leave a comment on our site you may opt-in to saving your name, email address and website in cookies. These are for your convenience so that you do not have to fill in your details again when you leave another comment. These cookies will last for one year.",
+      "If you visit our login page, we will set a temporary cookie to determine if your browser accepts cookies. This cookie contains no personal data and is discarded when you close your browser.",
+      "When you log in, we will also set up several cookies to save your login information and your screen display choices. Login cookies last for two days, and screen options cookies last for a year. If you select “Remember Me”, your login will persist for two weeks. If you log out of your account, the login cookies will be removed.",
+      "If you edit or publish an article, an additional cookie will be saved in your browser. This cookie includes no personal data and simply indicates the post ID of the article you just edited. It expires after 1 day.",
     ],
   },
   {
     heading: "Embedded content from other websites",
     paragraphs: [
-      "Pages on this site may include embedded content (for example videos or images) from other websites. Embedded content behaves in the same way as if you had visited the other website directly.",
-      "These websites may collect data about you, use cookies, embed additional third-party tracking and monitor your interaction with that content.",
+      "Articles on this site may include embedded content (e.g. videos, images, articles, etc.). Embedded content from other websites behaves in the exact same way as if the visitor has visited the other website.",
+      "These websites may collect data about you, use cookies, embed additional third-party tracking, and monitor your interaction with that embedded content, including tracking your interaction with the embedded content if you have an account and are logged in to that website.",
     ],
   },
   {
     heading: "Who we share your data with",
     paragraphs: [
-      "We do not sell your personal information. We share it only with service providers who help us operate the website and respond to you (such as hosting and email delivery), and only as far as needed for that purpose.",
+      "If you request a password reset, your IP address will be included in the reset email.",
     ],
   },
   {
     heading: "How long we retain your data",
     paragraphs: [
-      "We keep enquiry details for as long as needed to respond and to maintain a record of our business relationship. Newsletter subscriptions are kept until you unsubscribe.",
+      "If you leave a comment, the comment and its metadata are retained indefinitely. This is so we can recognize and approve any follow-up comments automatically instead of holding them in a moderation queue.",
+      "For users that register on our website (if any), we also store the personal information they provide in their user profile. All users can see, edit, or delete their personal information at any time (except they cannot change their username). Website administrators can also see and edit that information.",
     ],
   },
   {
     heading: "What rights you have over your data",
     paragraphs: [
-      `You can ask us for a copy of the personal data we hold about you, or ask us to correct or erase it, by emailing ${siteConfig.email}. This does not include data we are obliged to keep for administrative, legal or security purposes.`,
+      "If you have an account on this site, or have left comments, you can request to receive an exported file of the personal data we hold about you, including any data you have provided to us. You can also request that we erase any personal data we hold about you. This does not include any data we are obliged to keep for administrative, legal, or security purposes.",
     ],
   },
   {
     heading: "Where we send your data",
-    paragraphs: [
-      "Form submissions may be checked by automated spam-detection services before they reach our team.",
-    ],
+    paragraphs: ["Visitor comments may be checked through an automated spam detection service."],
   },
 ]
 
 export default function PrivacyPolicyPage() {
-  return (
-    <LegalPage
-      title="Privacy Policy"
-      updated="November 2026"
-      intro="Your privacy matters to us. This policy explains what information we collect through this website, why we collect it and how you can control it."
-      sections={sections}
-    />
-  )
+  return <LegalPage title="Privacy Policy" sections={sections} />
 }
