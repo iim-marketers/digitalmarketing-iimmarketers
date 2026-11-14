@@ -1,6 +1,6 @@
 "use client"
 
-import { useActionState, useEffect, useId } from "react"
+import { useEffect, useId } from "react"
 import { CircleCheck, LoaderCircle, Send } from "lucide-react"
 import { toast } from "sonner"
 
@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { useFormAction } from "@/lib/use-form-action"
 import { cn } from "@/lib/utils"
 
 const initial: FormState = { status: "idle" }
@@ -26,11 +27,11 @@ export function LeadForm({
   submitLabel,
   className,
 }: Props) {
-  const [state, action, pending] = useActionState(submitLead, initial)
+  const [state, action, pending] = useFormAction(submitLead, initial)
   const id = useId()
 
   useEffect(() => {
-    if (state.status === "error" && state.message && !state.errors) toast.error(state.message)
+    if (state.status === "error" && state.message) toast.error(state.message)
   }, [state])
 
   const err = state.errors ?? {}
@@ -128,12 +129,6 @@ export function LeadForm({
           className={cn(inputCls, "h-auto py-3", compact ? "min-h-20" : "min-h-24")}
         />
       </Field>
-
-      {state.status === "error" && state.errors ? (
-        <p role="alert" className="text-sm text-destructive">
-          {state.message}
-        </p>
-      ) : null}
 
       <Button
         type="submit"
