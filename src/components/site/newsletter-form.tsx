@@ -1,18 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { useActionState, useId } from "react";
+import { useEffect, useId } from "react";
 import { LoaderCircle, Send } from "lucide-react";
+import { toast } from "sonner";
 
 import { subscribeNewsletter, type FormState } from "@/app/actions";
 import { Checkbox } from "@/components/ui/checkbox";
-import { cn } from "@/lib/utils";
+import { useFormAction } from "@/lib/use-form-action";
 
 const initial: FormState = { status: "idle" };
 
 export function NewsletterForm() {
-  const [state, action, pending] = useActionState(subscribeNewsletter, initial);
+  const [state, action, pending] = useFormAction(subscribeNewsletter, initial);
   const id = useId();
+
+  useEffect(() => {
+    if (state.status === "error" && state.message) toast.error(state.message);
+  }, [state]);
 
   if (state.status === "success") {
     return (
@@ -78,11 +83,6 @@ export function NewsletterForm() {
           of the company
         </label>
       </div>
-      {state.status === "error" ? (
-        <p role="alert" className={cn("text-xs text-amber")}>
-          {state.message}
-        </p>
-      ) : null}
     </form>
   );
 }

@@ -1,8 +1,11 @@
 export const siteConfig = {
   name: "IIM Marketers",
   shortName: "IIM Marketers",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://digitalmarketing.iimmarketers.com",
-  title: "IIM Marketers — Performance-Driven Digital Marketing Agency in Bengaluru",
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    "https://www.digitalmarketing.iimmarketers.com",
+  title:
+    "IIM Marketers — Performance-Driven Digital Marketing Agency in Bengaluru",
   description:
     "5-star rated digital marketing agency founded by IIT-IIM alumni. Guaranteed lead generation, SEO, PPC, social media, video production and AI consulting for 150+ brands over 9+ years.",
   tagline: "We triple your business in 6 months.",
@@ -18,28 +21,28 @@ export const siteConfig = {
     { label: "India Affiliate", name: "Estrelligent Technology Pvt Ltd" },
     { label: "Netherlands Affiliate", name: "Sound Board" },
   ],
-} as const
+} as const;
 
 export const mainNav = [
   { title: "Home", href: "/" },
   { title: "About Us", href: "/about" },
   { title: "Blog", href: "/blog" },
   { title: "Contact Us", href: "/contact" },
-] as const
+] as const;
 
 export const heroHighlights = [
   "Trusted by 150+ satisfied brands",
   "Performance-driven digital marketing solutions",
   "ROI-centric experts you can count on",
   "Innovative strategies to maximize campaign success",
-]
+];
 
 export const stats = [
   { value: 9, suffix: " years", label: "Proven track record" },
   { value: 2, suffix: " lac", label: "Leads generated" },
   { value: 24, suffix: " hours", label: "Minimum TAT" },
   { value: 150, suffix: "+", label: "Projects completed" },
-]
+];
 
 export const capabilities = [
   { title: "SEO", icon: "/images/icons/seo.webp" },
@@ -48,7 +51,7 @@ export const capabilities = [
   { title: "Lead Generation", icon: "/images/icons/leads.webp" },
   { title: "Stunning Videos", icon: "/images/icons/video.webp" },
   { title: "AI Consulting", icon: "/images/icons/ai.webp" },
-]
+];
 
 export const coreServices = [
   {
@@ -99,7 +102,7 @@ export const coreServices = [
     description:
       "Measure every move with data-driven insights and reports to optimize campaigns for maximum ROI.",
   },
-] as const
+] as const;
 
 export const solutions = [
   {
@@ -111,7 +114,8 @@ export const solutions = [
   {
     number: "02",
     title: "Brand Solutions",
-    description: "Build a brand that stands out with strategic identity and design.",
+    description:
+      "Build a brand that stands out with strategic identity and design.",
   },
   {
     number: "03",
@@ -122,7 +126,8 @@ export const solutions = [
   {
     number: "04",
     title: "PR & Media Coverage",
-    description: "Strengthening brand credibility with strategic PR and media coverage.",
+    description:
+      "Strengthening brand credibility with strategic PR and media coverage.",
   },
   {
     number: "05",
@@ -136,15 +141,23 @@ export const solutions = [
     description:
       "Market research services delivering insights to drive strategic business decisions.",
   },
-]
+];
 
-/** "How It Works" — the live site only names steps 3 and 4. */
 export const processSteps: { title?: string; description: string }[] = [
   { description: "Our team of IIM grads analyze your business" },
-  { description: "We create the right business strategy, positioning statement for your business" },
-  { title: "Review & Perfect", description: "We make revisions until you’re 100% satisfied." },
-  { title: "Deliver & Shine", description: "Create the campaigns that actually deliver your results" },
-]
+  {
+    description:
+      "We create the right business strategy, positioning statement for your business",
+  },
+  {
+    title: "Review & Perfect",
+    description: "We make revisions until you’re 100% satisfied.",
+  },
+  {
+    title: "Deliver & Shine",
+    description: "Create the campaigns that actually deliver your results",
+  },
+];
 
 export const studioFeatures = [
   {
@@ -167,7 +180,7 @@ export const studioFeatures = [
     description:
       "As a leading advertising company in Kolkata, we specialize in guaranteed lead generation and high-converting paid campaigns. From clinics and schools to service sector companies, we deliver measurable results that drive business growth.",
   },
-]
+];
 
 export const socialGuarantees = [
   "Top-tier editing with precision cuts and seamless transitions",
@@ -175,14 +188,14 @@ export const socialGuarantees = [
   "Fast turnaround times and custom revisions",
   "Perfectly synced music & sound engineering",
   "A 100% satisfaction guarantee",
-]
+];
 
 export const aboutFeatures = [
   { title: "Best quality support", icon: "Headset" },
   { title: "Money back guarantee", icon: "BadgeIndianRupee" },
   { title: "Serve the best", icon: "Sparkles" },
   { title: "Trusted Professionals", icon: "ShieldCheck" },
-] as const
+] as const;
 
 export const testimonials = [
   {
@@ -220,14 +233,19 @@ export const testimonials = [
     quote:
       "We’ve been working with IIM Marketers for a while now, and the results speak for themselves. Their PPC campaigns have been instrumental in driving targeted leads to our business. Overall, IIM Marketers has proven to be a reliable partner in our digital marketing journey.",
   },
-]
+];
 
 export const caseStudies = [
   {
     client: "Apollo 24|7",
     metric: "10,000",
     text: "footfall in 3 months in an event",
-    photo: { src: "/images/cases/apollo-event.webp", width: 1177, height: 1337, position: "60% 50%" },
+    photo: {
+      src: "/images/cases/apollo-event.webp",
+      width: 1177,
+      height: 1337,
+      position: "60% 50%",
+    },
     photoAlt: "Apollo 24|7 event",
     mediaColumns: "5fr 6fr",
     logo: "/images/cases/apollo-logo.webp",
@@ -238,25 +256,50 @@ export const caseStudies = [
     lead: "Profitable ecommerce with",
     metric: "100+",
     text: "orders per day within 3 months of launch",
-    photo: { src: "/images/cases/nalva-launch.webp", width: 1941, height: 810, position: "40% 50%" },
+    photo: {
+      src: "/images/cases/nalva-launch.webp",
+      width: 1941,
+      height: 810,
+      position: "40% 50%",
+    },
     photoAlt: "Vanitha Textiles proudly launched its new website www.nalva.in",
     mediaColumns: "7fr 4fr",
     logo: "/images/cases/nalva-logo.webp",
     brandColor: "#1fb0bc",
   },
-]
+];
 
 export const clientLogos = [
   ...Array.from({ length: 8 }, (_, i) => `/images/clients/a${i + 1}.webp`),
   ...Array.from({ length: 15 }, (_, i) => `/images/clients/b${i + 1}.webp`),
-]
+];
 
 export const studioPhotos = [
-  { src: "/images/studio/s1.webp", alt: "The IIM Marketers team together", width: 1280, height: 960 },
-  { src: "/images/studio/s2.webp", alt: "Team members at the IIM Marketers office", width: 1280, height: 960 },
-  { src: "/images/studio/s4.webp", alt: "Behind the scenes at a shoot", width: 720, height: 1599 },
-  { src: "/images/studio/s3.webp", alt: "Inside the in-house video studio", width: 1600, height: 1197 },
-]
+  {
+    src: "/images/studio/s1.webp",
+    alt: "The IIM Marketers team together",
+    width: 1280,
+    height: 960,
+  },
+  {
+    src: "/images/studio/s2.webp",
+    alt: "Team members at the IIM Marketers office",
+    width: 1280,
+    height: 960,
+  },
+  {
+    src: "/images/studio/s4.webp",
+    alt: "Behind the scenes at a shoot",
+    width: 720,
+    height: 1599,
+  },
+  {
+    src: "/images/studio/s3.webp",
+    alt: "Inside the in-house video studio",
+    width: 1600,
+    height: 1197,
+  },
+];
 
 export const team = [
   {
@@ -265,7 +308,7 @@ export const team = [
     bio: "Ex Digital Performance Improvement, EY, Emerging Markets.",
     image: "/images/team/soumini-basu.webp",
   },
-]
+];
 
 export const faqs = [
   {
@@ -292,7 +335,7 @@ export const faqs = [
     q: "Can you help with brand strategy and design?",
     a: "Absolutely. In addition to marketing, we offer branding, logo design, and website development services to help you establish a strong, professional digital identity.",
   },
-]
+];
 
 export const footerServices = [
   "Brand Solutions",
@@ -302,4 +345,4 @@ export const footerServices = [
   "Video Editing",
   "Motion Graphics",
   "Research Solutions",
-]
+];

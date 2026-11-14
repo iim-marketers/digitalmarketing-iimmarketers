@@ -45,15 +45,66 @@ function CtaPanel() {
               <stop offset="1" stopColor="#ffb21f" />
             </linearGradient>
           </defs>
-          <path
-            d="M0,410 C 260,400 430,330 540,90"
-            fill="none"
-            stroke="url(#cta-leap)"
-            strokeWidth="4"
-            strokeLinecap="round"
-          />
-          <circle cx="540" cy="90" r="26" fill="#ffb21f" fillOpacity="0.15" />
-          <circle cx="540" cy="90" r="9" fill="#ffb21f" />
+          <g transform="translate(0 -32)">
+            <line
+              x1="0"
+              x2="576"
+              y1="410"
+              y2="410"
+              stroke="white"
+              strokeOpacity="0.3"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+            <path
+              d="M0,410 C 260,400 430,330 540,90"
+              fill="none"
+              stroke="url(#cta-leap)"
+              strokeWidth="4"
+              strokeLinecap="round"
+            />
+            <line
+              x1="540"
+              x2="540"
+              y1="120"
+              y2="410"
+              stroke="white"
+              strokeOpacity="0.3"
+              strokeWidth="1.5"
+              strokeDasharray="4 6"
+            />
+            <circle cx="540" cy="90" r="26" fill="#ffb21f" fillOpacity="0.15" />
+            <circle cx="540" cy="90" r="9" fill="#ffb21f" />
+            <rect
+              x="388"
+              y="71"
+              width="122"
+              height="38"
+              rx="19"
+              fill="white"
+              fillOpacity="0.12"
+              stroke="white"
+              strokeOpacity="0.25"
+            />
+            <text
+              x="449"
+              y="96"
+              textAnchor="middle"
+              fill="white"
+              fontSize="18"
+              fontWeight="600"
+            >
+              3× growth
+            </text>
+            <g fill="white" fillOpacity="0.7" fontSize="14">
+              <text x="0" y="433">
+                Today
+              </text>
+              <text x="540" y="433" textAnchor="middle">
+                6 months
+              </text>
+            </g>
+          </g>
         </svg>
         <div className="relative max-w-2xl">
           <h2

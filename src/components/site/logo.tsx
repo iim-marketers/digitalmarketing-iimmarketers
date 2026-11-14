@@ -46,7 +46,6 @@ export function Logo({
 }) {
   const pathname = usePathname();
 
-  // Already on the home page: a link to "/" won't move the viewport, so scroll to the top instead.
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (pathname !== "/") return;
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
