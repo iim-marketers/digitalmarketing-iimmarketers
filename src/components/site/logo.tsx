@@ -8,7 +8,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
     <Link
       href="/"
       aria-label="IIM Marketers — home"
-      className={cn("group inline-flex items-center gap-2.5", className)}
+      className={cn("group inline-flex items-center gap-1.5", className)}
     >
       <Image
         src="/images/brand/logo-footer.webp"
@@ -16,25 +16,15 @@ export function Logo({ className, inverted = false }: { className?: string; inve
         width={300}
         height={300}
         priority
-        className="-my-2 -mr-1 size-14 transition-transform duration-300 group-hover:-rotate-6"
+        className="-my-2 -ml-2 size-12 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:-rotate-6"
       />
-      <span className="flex flex-col leading-none">
-        <span
-          className={cn(
-            "font-heading text-xl font-extrabold tracking-[0.2em]",
-            inverted ? "text-white" : "text-ink"
-          )}
-        >
-          IIM
-        </span>
-        <span
-          className={cn(
-            "mt-1 text-[0.62rem] font-medium tracking-[0.32em] uppercase",
-            inverted ? "text-white/70" : "text-muted-foreground"
-          )}
-        >
-          Marketers
-        </span>
+      <span
+        className={cn(
+          "font-heading text-xl font-semibold tracking-[-0.03em]",
+          inverted ? "text-white" : "text-ink"
+        )}
+      >
+        IIM Marketers
       </span>
     </Link>
   )

@@ -1,99 +1,55 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, Check, Phone, Star } from "lucide-react"
+import { ArrowRight, Phone, Star } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
 import { LeadForm } from "@/components/site/lead-form"
-import { heroHighlights, siteConfig, testimonials } from "@/lib/site"
+import { StatCounter } from "@/components/site/stat-counter"
+import { siteConfig, stats, testimonials } from "@/lib/site"
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-lavender">
-      <div className="bg-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_30%_20%,black,transparent_70%)]" />
-      <div className="pointer-events-none absolute -top-40 -left-32 size-[28rem] rounded-full bg-brand/15 blur-3xl" />
-      <div className="pointer-events-none absolute right-0 bottom-0 size-[22rem] rounded-full bg-amber/20 blur-3xl" />
-
-      <div className="container-page relative grid items-center gap-12 py-14 sm:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:py-24">
-        <div>
-          <div className="inline-flex items-center gap-3 rounded-full bg-white py-1.5 pr-4 pl-1.5 shadow-sm ring-1 ring-border">
-            <Image
-              src="/images/brand/hero.webp"
-              alt="5 star Google reviews"
-              width={735}
-              height={325}
-              priority
-              className="h-7 w-auto"
-            />
-            <span className="flex items-center gap-1 text-sm font-medium text-ink">
-              <span className="flex text-amber" aria-hidden>
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="size-3.5 fill-current" />
-                ))}
-              </span>
-              Rated on Google
+    <section aria-labelledby="hero-title">
+      {/* On desktop the hero fills the viewport below the 71px header and centres its content
+          (capped at 60rem so very tall screens don't get empty bands); type and spacing scale with viewport height so CTAs and the form stay above the fold. */}
+      <div className="container-page grid gap-12 pt-8 pb-14 sm:pt-12 sm:pb-16 lg:min-h-[min(calc(100svh-71px),60rem)] lg:grid-cols-12 lg:items-center lg:gap-10 lg:py-[clamp(1.5rem,4svh,3.5rem)] xl:gap-14">
+        <div className="lg:col-span-7">
+          <p className="inline-flex items-center gap-2.5 rounded-full border border-line bg-white py-1.5 pr-4 pl-1.5 text-sm text-ink/70">
+            <span className="flex items-center gap-0.5 rounded-full bg-brand px-2 py-1 text-amber">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} className="size-3 fill-current" aria-hidden />
+              ))}
             </span>
-          </div>
-
-          <h1 className="mt-6 text-4xl leading-[1.08] font-black tracking-tight sm:text-5xl xl:text-[3.6rem]">
-            India’s best digital marketing agency in{" "}
-            <span className="relative whitespace-nowrap text-brand">
-              lead generation
-              <svg
-                aria-hidden
-                viewBox="0 0 300 12"
-                preserveAspectRatio="none"
-                className="absolute -bottom-1.5 left-0 h-3 w-full text-amber"
-              >
-                <path
-                  d="M2 9C60 3 140 1 298 6"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>{" "}
-            &amp; sales
-          </h1>
-
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            <strong className="font-semibold text-ink">We triple your business in 6 months.</strong>{" "}
-            Founded by IIT-IIM alumni, delivering guaranteed lead generation and sales for 9+ years
-            — within your budget.
+            5.0 on Google<span className="hidden sm:inline"> · Founded by IIT-IIM alumni</span>
           </p>
 
-          <ul className="mt-7 grid gap-3 sm:grid-cols-2">
-            {heroHighlights.map((h) => (
-              <li key={h} className="flex items-start gap-2.5 text-[0.95rem] text-ink/85">
-                <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-brand text-white">
-                  <Check className="size-3" strokeWidth={3} aria-hidden />
-                </span>
-                {h}
-              </li>
-            ))}
-          </ul>
+          <h1
+            id="hero-title"
+            className="mt-6 text-[clamp(2.6rem,min(9vw,11svh),4.5rem)] leading-[0.94] tracking-[-0.055em] sm:text-[clamp(3rem,min(8vw,11svh),5.5rem)] lg:mt-[clamp(1.25rem,3svh,2rem)] lg:text-[clamp(3rem,min(6.2vw,10.5svh),6.25rem)]"
+          >
+            We <span className="text-spectrum pr-[0.04em]">triple</span> your business in six
+            months.
+          </h1>
 
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <Button asChild size="lg" className="h-13 rounded-full px-7 text-base">
-              <Link href="/contact">
-                Get started
-                <ArrowRight data-icon="inline-end" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="h-13 rounded-full bg-white px-6 text-base"
-            >
-              <a href={siteConfig.phones.primary.href}>
-                <Phone data-icon="inline-start" />
-                {siteConfig.phones.primary.label}
-              </a>
-            </Button>
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-ink/65 sm:text-lg lg:mt-[clamp(1.25rem,3svh,2rem)] lg:text-[clamp(1rem,2.4svh,1.25rem)]">
+            India’s lead-generation and sales specialists. Strategy from business-school minds,
+            execution from our in-house studio and AI tools — within your budget.
+          </p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-3 lg:mt-[clamp(1.5rem,4svh,2.5rem)]">
+            <Link href="#growth-plan" className="btn btn-primary group h-13 px-7 text-base max-sm:w-full">
+              Get my free growth plan
+              <ArrowRight
+                className="size-4 transition-transform group-hover:translate-x-0.5"
+                aria-hidden
+              />
+            </Link>
+            <a href={siteConfig.phones.primary.href} className="btn btn-light h-13 px-6 text-base max-sm:w-full">
+              <Phone className="size-4" aria-hidden />
+              {siteConfig.phones.primary.label}
+            </a>
           </div>
 
-          <div className="mt-10 flex items-center gap-4">
+          <div className="mt-8 flex items-center gap-4 lg:mt-[clamp(1.5rem,4.5svh,3rem)]">
             <div className="flex -space-x-3">
               {testimonials.slice(0, 4).map((t) => (
                 <Image
@@ -102,35 +58,52 @@ export function Hero() {
                   alt=""
                   width={44}
                   height={44}
-                  className="size-11 rounded-full object-cover ring-[3px] ring-lavender"
+                  className="size-11 rounded-full object-cover ring-3 ring-paper"
                 />
               ))}
             </div>
-            <p className="text-sm leading-snug text-muted-foreground">
-              <span className="block font-heading text-base font-extrabold text-ink">
-                150+ satisfied brands
-              </span>
-              across India, UK, Australia &amp; Europe
+            <p className="text-sm leading-snug text-ink/60">
+              <span className="block font-semibold text-ink">Trusted by 150+ brands</span>
+              across India, the UK, Australia &amp; Europe
             </p>
           </div>
         </div>
 
-        <div className="relative">
-          <div className="absolute -inset-3 -z-0 rotate-2 rounded-[2rem] bg-gradient-to-br from-brand/25 to-amber/25" />
-          <div className="relative rounded-[1.75rem] bg-white p-6 shadow-[0_40px_80px_-40px_rgb(29_23_41/0.35)] ring-1 ring-border sm:p-8">
-            <div className="absolute -top-4 right-6 rotate-3 rounded-full bg-amber px-4 py-1.5 font-heading text-sm font-extrabold text-ink shadow-md">
-              50% OFF
-            </div>
-            <h2 className="text-2xl leading-tight font-extrabold">
-              Fill up the form &amp; get{" "}
-              <span className="text-brand">50% off</span> your first month’s fees
-            </h2>
-            <p className="mt-2 mb-6 text-sm text-muted-foreground">
-              A strategist will call you back within 24 hours with a free growth plan.
+        <div className="lg:col-span-5">
+          <div
+            id="growth-plan"
+            className="max-w-2xl scroll-mt-24 rounded-[1.75rem] border border-line bg-white p-5 shadow-[0_40px_80px_-48px_rgb(35_29_69/0.35)] sm:p-7 lg:max-w-none lg:p-[clamp(1.25rem,3.2svh,2rem)]"
+          >
+            <p className="inline-flex items-center gap-2 rounded-full bg-paper-deep px-3 py-1 text-xs font-semibold text-ink">
+              <span aria-hidden className="bg-spectrum size-2 rounded-full" />
+              50% off your first month
             </p>
-            <LeadForm source="Homepage hero" variant="compact" submitLabel="Claim my 50% off" />
+            <h2 className="mt-3 text-[1.6rem] leading-tight tracking-[-0.03em] sm:text-[1.75rem]">
+              Get your free growth plan
+            </h2>
+            <p className="mt-1 mb-5 text-sm text-ink/60">
+              A strategist calls you back within 24 hours.
+            </p>
+            <LeadForm source="Homepage hero" variant="compact" submitLabel="Get my free plan" />
           </div>
         </div>
+      </div>
+
+      <div className="container-page">
+        {/* gap-px over a line-coloured background draws the inner dividers */}
+        <dl className="grid grid-cols-2 gap-px border-y border-line bg-line lg:grid-cols-4">
+          {stats.map((s) => (
+            <div
+              key={s.label}
+              className="flex flex-col-reverse gap-1 bg-paper py-8 pr-4 pl-6 odd:pl-0 sm:py-10 sm:pl-8 sm:odd:pl-0 lg:[&:nth-child(3)]:pl-8"
+            >
+              <dt className="text-sm text-ink/55">{s.label}</dt>
+              <dd className="font-heading text-[clamp(2.5rem,5vw,4rem)] leading-none font-semibold tracking-[-0.05em] text-ink">
+                <StatCounter value={s.value} suffix={s.suffix} />
+              </dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   )

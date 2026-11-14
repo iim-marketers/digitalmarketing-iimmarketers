@@ -117,34 +117,40 @@ export const coreServices = [
 export const solutions = [
   {
     number: "01",
+    symbol: "Md",
     title: "Media Solutions",
     description:
       "Strategic media planning and data-driven execution for strong brand impact via social media.",
   },
   {
     number: "02",
+    symbol: "Br",
     title: "Brand Solutions",
     description: "Build a brand that stands out with strategic identity and design.",
   },
   {
     number: "03",
+    symbol: "Tc",
     title: "Tech Solutions",
     description:
       "Tech-driven solutions for seamless operations, including e-commerce website development.",
   },
   {
     number: "04",
+    symbol: "Pr",
     title: "PR & Media Coverage",
     description: "Strengthening brand credibility with strategic PR and media coverage.",
   },
   {
     number: "05",
+    symbol: "Fp",
     title: "Films & Photography",
     description:
       "A video production company creating compelling visuals that captivate and connect.",
   },
   {
     number: "06",
+    symbol: "Rs",
     title: "Research Solutions",
     description:
       "Market research services delivering insights to drive strategic business decisions.",
@@ -246,6 +252,10 @@ export const caseStudies = [
   {
     client: "Apollo 24|7",
     result: "10,000 footfall in 3 months",
+    metric: "10,000",
+    metricLabel: "footfall",
+    timeline: "3 months",
+    brief: "Event promotion",
     detail: "Event promotion and on-ground lead generation campaign.",
     image: "/images/brand/hero-banner.webp",
     width: 1600,
@@ -254,6 +264,10 @@ export const caseStudies = [
   {
     client: "nalva",
     result: "100+ orders per day within 3 months",
+    metric: "100+",
+    metricLabel: "orders per day",
+    timeline: "3 months",
+    brief: "E-commerce launch",
     detail: "Profitable e-commerce launch for Vanitha Textiles — website, ads and content.",
     image: "/images/brand/team-banner.webp",
     width: 3780,

@@ -49,7 +49,7 @@ export default function AboutPage() {
                 <Play className="size-5 fill-current" aria-hidden />
               </span>
               <span>
-                <span className="block font-heading text-2xl font-black text-ink">24 hrs</span>
+                <span className="block font-heading text-2xl font-semibold text-ink">24 hrs</span>
                 <span className="text-sm text-muted-foreground">delivery time</span>
               </span>
             </div>
@@ -73,7 +73,7 @@ export default function AboutPage() {
                 const Icon = iconMap[f.icon]
                 return (
                   <li key={f.title} className="flex items-center gap-3 rounded-2xl border p-4">
-                    <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-brand-soft text-brand">
+                    <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-paper-deep text-ink">
                       <Icon className="size-5" aria-hidden />
                     </span>
                     <span className="font-medium text-ink">{f.title}</span>
@@ -97,7 +97,7 @@ export default function AboutPage() {
             {stats.map((s) => (
               <div key={s.label} className="flex flex-col-reverse p-6 text-center sm:p-8">
                 <dt className="mt-2 text-sm text-muted-foreground">{s.label}</dt>
-                <dd className="font-heading text-4xl font-black text-brand sm:text-5xl">
+                <dd className="font-heading text-4xl font-semibold tracking-[-0.04em] text-ink sm:text-5xl">
                   <StatCounter value={s.value} suffix={s.suffix} />
                 </dd>
               </div>
@@ -110,18 +110,18 @@ export default function AboutPage() {
 
       <section aria-labelledby="viral-title" className="section">
         <div className="container-page">
-          <div className="relative overflow-hidden rounded-[2rem] bg-brand px-6 py-14 text-center text-white sm:px-12">
+          <div className="relative overflow-hidden rounded-[2rem] bg-panel px-6 py-14 text-center text-white sm:px-12">
             <div className="bg-grid pointer-events-none absolute inset-0 opacity-25 [mask-image:radial-gradient(ellipse,black,transparent_70%)]" />
             <h2
               id="viral-title"
-              className="relative mx-auto max-w-3xl text-3xl leading-tight font-extrabold text-white sm:text-4xl"
+              className="relative mx-auto max-w-3xl text-3xl leading-tight font-semibold text-white sm:text-4xl"
             >
               We turn your raw footage into viral, scroll-stopping videos!
             </h2>
             <Button
               asChild
               size="lg"
-              className="relative mt-8 h-12 rounded-full bg-amber px-7 text-base text-ink hover:bg-amber/90"
+              className="relative mt-8 h-12 rounded-full bg-white px-7 text-base text-brand hover:bg-white/90"
             >
               <Link href="/contact">
                 Contact us
@@ -155,7 +155,7 @@ export default function AboutPage() {
                   </div>
                   <div className="p-6 text-center">
                     <h3 className="text-xl font-bold">{m.name}</h3>
-                    <p className="mt-1 text-sm font-semibold text-brand">{m.role}</p>
+                    <p className="mt-1 text-sm font-semibold text-ink/60">{m.role}</p>
                     <p className="mt-2 text-sm text-muted-foreground">{m.bio}</p>
                   </div>
                 </article>
@@ -163,7 +163,7 @@ export default function AboutPage() {
             ))}
             <li className="w-full max-w-sm">
               <div className="flex h-full flex-col items-center justify-center gap-4 rounded-3xl border border-dashed bg-lavender/60 p-8 text-center">
-                <span className="grid size-14 place-items-center rounded-full bg-white text-brand shadow-sm">
+                <span className="grid size-14 place-items-center rounded-full bg-white text-ink shadow-sm">
                   <Award className="size-6" aria-hidden />
                 </span>
                 <p className="font-heading text-xl font-bold text-ink">

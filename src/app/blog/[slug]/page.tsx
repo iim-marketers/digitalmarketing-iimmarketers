@@ -35,7 +35,7 @@ export async function generateMetadata(props: PageProps<"/blog/[slug]">): Promis
 function Block({ block }: { block: PostBlock }) {
   switch (block.type) {
     case "h2":
-      return <h2 className="mt-10 text-2xl font-extrabold">{block.text}</h2>
+      return <h2 className="mt-10 text-2xl font-semibold">{block.text}</h2>
     case "p":
       return <p className="mt-5 text-[1.05rem] leading-relaxed text-ink/80">{block.text}</p>
     case "list":
@@ -160,7 +160,7 @@ export default async function PostPage(props: PageProps<"/blog/[slug]">) {
 
             {related.length > 0 ? (
               <section aria-labelledby="related-title" className="mt-16">
-                <h2 id="related-title" className="text-2xl font-extrabold">
+                <h2 id="related-title" className="text-2xl font-semibold">
                   Keep reading
                 </h2>
                 <ul className="mt-6 grid gap-6 sm:grid-cols-2">

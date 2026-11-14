@@ -45,7 +45,7 @@ export function BlogSidebar({
                   <time dateTime={p.date} className="text-xs text-muted-foreground">
                     {formatDate(p.date)}
                   </time>
-                  <span className="line-clamp-2 text-sm leading-snug font-semibold text-ink transition-colors group-hover:text-brand">
+                  <span className="line-clamp-2 text-sm leading-snug font-semibold text-ink transition-colors group-hover:text-ink/70">
                     {p.title}
                   </span>
                 </span>
@@ -67,7 +67,7 @@ export function BlogSidebar({
                   aria-current={active ? "page" : undefined}
                   className={cn(
                     "flex items-center justify-between rounded-xl px-3 py-2.5 text-sm transition-colors",
-                    active ? "bg-brand-soft font-semibold text-brand" : "text-ink/80 hover:bg-muted"
+                    active ? "bg-ink/[0.06] font-semibold text-ink" : "text-ink/80 hover:bg-muted"
                   )}
                 >
                   {c.name}
@@ -92,7 +92,7 @@ export function BlogSidebar({
                   "inline-flex rounded-full border px-3.5 py-1.5 text-sm transition-colors",
                   activeTag === t.slug
                     ? "border-brand bg-brand text-white"
-                    : "text-ink/75 hover:border-brand hover:text-brand"
+                    : "text-ink/75 hover:border-ink hover:text-ink"
                 )}
               >
                 {t.name}
@@ -102,12 +102,12 @@ export function BlogSidebar({
         </ul>
       </Widget>
 
-      <section className="relative overflow-hidden rounded-3xl bg-ink p-6 text-white">
-        <div className="pointer-events-none absolute -top-10 -right-10 size-40 rounded-full bg-brand/50 blur-3xl" />
-        <p className="relative font-heading text-xl font-extrabold text-white">
+      <section className="relative overflow-hidden rounded-3xl bg-panel p-6 text-white">
+        <div className="pointer-events-none absolute -top-10 -right-10 size-40 rounded-full bg-amber/30 blur-3xl" />
+        <p className="relative font-heading text-xl font-semibold text-white">
           Get 50% off your first month
         </p>
-        <p className="relative mt-2 text-sm text-white/70">
+        <p className="relative mt-2 text-sm text-white/80">
           Talk to an IIM-led strategist about your growth goals.
         </p>
         <Button

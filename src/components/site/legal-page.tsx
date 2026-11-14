@@ -28,7 +28,7 @@ export function LegalPage({
                   <li key={s.heading}>
                     <a
                       href={`#section-${i + 1}`}
-                      className="-ml-px block border-l border-transparent py-1 pl-4 text-ink/70 transition-colors hover:border-brand hover:text-brand"
+                      className="-ml-px block border-l border-transparent py-1 pl-4 text-ink/70 transition-colors hover:border-ink hover:text-ink"
                     >
                       {s.heading}
                     </a>
@@ -42,7 +42,7 @@ export function LegalPage({
             <p className="mt-4 text-lg leading-relaxed text-ink/80">{intro}</p>
             {sections.map((s, i) => (
               <section key={s.heading} id={`section-${i + 1}`} className="scroll-mt-28">
-                <h2 className="mt-10 text-2xl font-extrabold">{s.heading}</h2>
+                <h2 className="mt-10 text-2xl font-semibold">{s.heading}</h2>
                 {s.paragraphs.map((p) => (
                   <p key={p} className="mt-4 leading-relaxed text-ink/75">
                     {p}

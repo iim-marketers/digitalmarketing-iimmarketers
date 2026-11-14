@@ -35,7 +35,7 @@ export function NewsletterForm() {
           required
           autoComplete="email"
           placeholder="Enter your email"
-          className="min-w-0 flex-1 bg-transparent px-4 text-sm text-white placeholder:text-white/50 focus:outline-none"
+          className="min-w-0 flex-1 bg-transparent px-4 text-sm text-white placeholder:text-white/65 focus:outline-none"
         />
         <button
           type="submit"
@@ -58,7 +58,7 @@ export function NewsletterForm() {
         className="hidden"
         aria-hidden
       />
-      <div className="flex items-start gap-2.5 text-xs text-white/65">
+      <div className="flex items-start gap-2.5 text-xs text-white/80">
         <Checkbox
           id={`${id}-agree`}
           name="agree"

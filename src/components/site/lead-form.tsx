@@ -21,7 +21,12 @@ type Props = {
   className?: string
 }
 
-export function LeadForm({ source, variant = "full", submitLabel, className }: Props) {
+export function LeadForm({
+  source,
+  variant = "full",
+  submitLabel,
+  className,
+}: Props) {
   const [state, action, pending] = useActionState(submitLead, initial)
   const id = useId()
 
@@ -37,22 +42,29 @@ export function LeadForm({ source, variant = "full", submitLabel, className }: P
       <div
         role="status"
         className={cn(
-          "flex flex-col items-center gap-3 rounded-2xl bg-brand-soft/60 px-6 py-10 text-center",
+          "flex flex-col items-center gap-3 rounded-2xl bg-paper-deep px-6 py-10 text-center",
           className
         )}
       >
         <CircleCheck className="size-10 text-brand" aria-hidden />
-        <p className="font-heading text-xl font-bold text-ink">Request received</p>
+        <p className="font-heading text-xl font-semibold text-ink">Request received</p>
         <p className="max-w-xs text-sm text-muted-foreground">{state.message}</p>
       </div>
     )
   }
 
-  const inputCls =
-    "h-12 rounded-xl border-input bg-white px-4 text-[0.95rem] shadow-none placeholder:text-muted-foreground/70 focus-visible:border-brand focus-visible:ring-brand/15"
+  const compact = variant === "compact"
+  const inputCls = cn(
+    compact ? "h-11" : "h-12",
+    "rounded-xl border-input bg-white px-4 text-[0.95rem] shadow-none placeholder:text-ink/35 focus-visible:border-ink/40 focus-visible:ring-4 focus-visible:ring-brand/10"
+  )
 
   return (
-    <form action={action} noValidate className={cn("flex flex-col gap-4", className)}>
+    <form
+      action={action}
+      noValidate
+      className={cn("flex flex-col", compact ? "gap-3.5" : "gap-4", className)}
+    >
       <input type="hidden" name="source" value={source} />
       <input
         type="text"
@@ -63,8 +75,13 @@ export function LeadForm({ source, variant = "full", submitLabel, className }: P
         aria-hidden
       />
 
-      <div className={cn("grid gap-4", variant === "full" && "sm:grid-cols-2")}>
-        <Field id={`${id}-name`} label="Your name" error={err.name}>
+      <div className={cn("grid sm:grid-cols-2", compact ? "gap-3.5" : "gap-4")}>
+        <Field
+          id={`${id}-name`}
+          label="Your name"
+          error={err.name}
+          className={compact ? "sm:col-span-2" : undefined}
+        >
           <Input
             id={`${id}-name`}
             name="name"
@@ -115,9 +132,9 @@ export function LeadForm({ source, variant = "full", submitLabel, className }: P
         <Textarea
           id={`${id}-message`}
           name="message"
-          rows={variant === "full" ? 5 : 3}
+          rows={compact ? 2 : 5}
           placeholder="Tell us about your business and goals"
-          className={cn(inputCls, "h-auto min-h-24 py-3")}
+          className={cn(inputCls, "h-auto py-3", compact ? "min-h-20" : "min-h-24")}
         />
       </Field>
 
@@ -130,7 +147,7 @@ export function LeadForm({ source, variant = "full", submitLabel, className }: P
       <Button
         type="submit"
         disabled={pending}
-        className="h-12 rounded-full text-base font-semibold"
+        className="mt-1 h-12 rounded-full bg-brand text-base font-medium text-white hover:bg-brand-deep"
       >
         {pending ? (
           <LoaderCircle className="animate-spin" data-icon="inline-start" />
@@ -151,16 +168,18 @@ function Field({
   label,
   error,
   optional,
+  className,
   children,
 }: {
   id: string
   label: string
   error?: string
   optional?: boolean
+  className?: string
   children: React.ReactNode
 }) {
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className={cn("flex min-w-0 flex-col gap-1.5", className)}>
       <Label htmlFor={id} className="text-sm font-medium text-ink">
         {label}
         {optional ? <span className="font-normal text-muted-foreground"> (optional)</span> : null}
