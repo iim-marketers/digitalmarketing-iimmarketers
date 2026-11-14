@@ -96,7 +96,7 @@ export function CoreServices() {
                 <span className="grid size-11 place-items-center rounded-xl bg-paper-deep text-ink transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
                   <Icon className="size-5" aria-hidden />
                 </span>
-                <h3 className="mt-6 text-xl leading-snug tracking-[-0.02em] sm:mt-10">
+                <h3 className="mt-6 text-xl leading-snug tracking-[-0.02em]">
                   {s.title}
                 </h3>
                 <p className="mt-2 text-[0.95rem] leading-relaxed text-ink/60">
