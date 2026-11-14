@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import type { MouseEvent } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -40,10 +44,22 @@ export function Logo({
   className?: string;
   size?: "md" | "lg";
 }) {
+  const pathname = usePathname();
+
+  // Already on the home page: a link to "/" won't move the viewport, so scroll to the top instead.
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (pathname !== "/") return;
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    event.preventDefault();
+    if (window.location.hash) window.history.replaceState(null, "", "/");
+    window.scrollTo({ top: 0 });
+  };
+
   return (
     <Link
       href="/"
       aria-label="IIM Marketers — home"
+      onClick={handleClick}
       className={cn("group inline-block shrink-0", className)}
     >
       <LogoArt
