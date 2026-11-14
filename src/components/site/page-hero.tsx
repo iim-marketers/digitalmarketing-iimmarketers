@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import { ChevronRight } from "lucide-react"
 
@@ -11,8 +12,16 @@ export function PageHero({
   crumbs: { label: string; href?: string }[]
 }) {
   return (
-    <section className="border-b border-line">
-      <div className="container-page pt-10 pb-14 sm:pt-14 sm:pb-20">
+    <section className="overflow-hidden border-b border-line">
+      <div className="container-page relative isolate pt-10 pb-14 sm:pt-14 sm:pb-20">
+        <Image
+          src="/images/brand/logo-footer.webp"
+          alt=""
+          aria-hidden
+          width={300}
+          height={300}
+          className="pointer-events-none absolute top-1/2 -right-12 -z-10 size-60 -translate-y-1/2 opacity-[0.1] select-none sm:right-0 sm:size-80 lg:right-[4%] lg:size-88 lg:opacity-[0.16]"
+        />
         <nav aria-label="Breadcrumb">
           <ol className="flex flex-wrap items-center gap-1.5 text-sm text-ink/50">
             {crumbs.map((c, i) => (

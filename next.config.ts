@@ -16,7 +16,6 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
-  // Keep links and search rankings from the old WordPress site working.
   async redirects() {
     return [
       ...posts.map((p) => ({

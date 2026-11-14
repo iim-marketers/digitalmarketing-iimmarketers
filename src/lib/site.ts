@@ -1,8 +1,3 @@
-/**
- * Central content + configuration for the IIM Marketers site.
- * Copy is carried over from the original WordPress site so it can be edited in one place.
- */
-
 export const siteConfig = {
   name: "IIM Marketers",
   shortName: "IIM Marketers",
@@ -227,7 +222,6 @@ export const testimonials = [
   },
 ]
 
-/** "Our Completed Projects" — wording taken from the result banners on the live site. */
 export const caseStudies = [
   {
     client: "Apollo 24|7",
@@ -235,7 +229,6 @@ export const caseStudies = [
     text: "footfall in 3 months in an event",
     photo: { src: "/images/cases/apollo-event.webp", width: 1177, height: 1337, position: "60% 50%" },
     photoAlt: "Apollo 24|7 event",
-    /** Media split: photo column vs brand panel (CSS grid-template-columns). */
     mediaColumns: "5fr 6fr",
     logo: "/images/cases/apollo-logo.webp",
     brandColor: "#ef5a23",

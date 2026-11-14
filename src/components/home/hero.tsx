@@ -1,29 +1,43 @@
-import Link from "next/link"
-import { ArrowRight, Check, Phone, Star } from "lucide-react"
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Check, Phone, Star } from "lucide-react";
 
-import { LeadForm } from "@/components/site/lead-form"
-import { StatCounter } from "@/components/site/stat-counter"
-import { heroHighlights, siteConfig, stats } from "@/lib/site"
+import { LeadForm } from "@/components/site/lead-form";
+import { StatCounter } from "@/components/site/stat-counter";
+import { heroHighlights, siteConfig, stats } from "@/lib/site";
 
 export function Hero() {
   return (
-    <section aria-labelledby="hero-title">
-      {/* On desktop the hero fills the viewport below the 71px header and centres its content
-          (capped at 60rem so very tall screens don't get empty bands); type and spacing scale with viewport height so CTAs and the form stay above the fold. */}
-      <div className="container-page grid gap-12 pt-8 pb-14 sm:pt-12 sm:pb-16 lg:min-h-[min(calc(100svh-71px),60rem)] lg:grid-cols-12 lg:items-center lg:gap-10 lg:py-[clamp(1.5rem,4svh,3.5rem)] xl:gap-14">
+    <section aria-labelledby="hero-title" className="overflow-x-clip">
+      <div className="container-page relative isolate grid gap-12 pt-8 pb-14 sm:pt-12 sm:pb-16 lg:min-h-[min(calc(100svh-87px),60rem)] lg:grid-cols-12 lg:items-center lg:gap-10 lg:py-[clamp(1.5rem,4svh,3.5rem)] xl:gap-14">
+        <Image
+          src="/images/brand/logo-footer.webp"
+          alt=""
+          aria-hidden
+          width={300}
+          height={300}
+          className="pointer-events-none absolute -top-6 -right-16 -z-10 size-72 opacity-[0.12] select-none sm:-right-10 sm:size-96 lg:top-1/2 lg:right-auto lg:left-[24%] lg:size-[min(34rem,70svh)] lg:-translate-y-1/2 lg:opacity-[0.12]"
+        />
         <div className="lg:col-span-7">
-          <p className="flex items-center gap-2.5 text-sm leading-snug text-ink/70">
-            <span className="flex shrink-0 items-center gap-0.5 rounded-full bg-brand px-2 py-1 text-amber">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="size-3 fill-current" aria-hidden />
-              ))}
+          <p className="inline-flex items-center gap-3 rounded-full border border-line bg-white/80 py-1.5 pr-5 pl-1.5 shadow-[0_12px_32px_-20px_rgb(35_29_69/0.35)] backdrop-blur-sm">
+            <span className="grid h-10 shrink-0 place-items-center rounded-full bg-brand px-3.5 font-heading text-lg font-semibold tracking-[-0.02em] text-white">
+              5.0
             </span>
-            <span>
-              <span className="font-medium text-ink">5-Star Rated on Google</span>
-              <span className="hidden sm:inline">
-                {" "}
-                – India’s Best Digital Marketing Agency in Lead Generation &amp; Sales
+            <span className="flex flex-col gap-1 leading-none">
+              <span className="flex gap-0.5 text-amber">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="size-3.5 fill-current" aria-hidden />
+                ))}
+                <span className="sr-only">5 out of 5 stars</span>
               </span>
+              <span className="text-[0.8rem] font-medium whitespace-nowrap text-ink">
+                Rated on Google
+              </span>
+            </span>
+            <span aria-hidden className="hidden h-9 w-px shrink-0 bg-line sm:block" />
+            <span className="hidden max-w-[17rem] text-[0.8rem] leading-snug text-ink/60 sm:block">
+              India’s best digital marketing agency in{" "}
+              <span className="font-medium text-ink">lead generation &amp; sales</span>
             </span>
           </p>
 
@@ -31,24 +45,30 @@ export function Hero() {
             id="hero-title"
             className="mt-6 text-[clamp(2.6rem,min(9vw,11svh),4.5rem)] leading-[0.94] tracking-[-0.055em] sm:text-[clamp(3rem,min(8vw,11svh),5.5rem)] lg:mt-[clamp(1.25rem,3svh,2rem)] lg:text-[clamp(3rem,min(6.2vw,10.5svh),6.25rem)]"
           >
-            We <span className="text-spectrum pr-[0.04em]">triple</span> your business in 6
-            months.
+            We <span className="text-spectrum pr-[0.04em]">triple</span> your
+            business in 6 months.
           </h1>
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-ink/65 sm:text-lg lg:mt-[clamp(1.25rem,3svh,2rem)] lg:text-[clamp(1rem,2.4svh,1.25rem)]">
-            Founded by IIT-IIM alumni, delivering guaranteed lead generation and sales for 9+ years
-            within your budget.
+            Founded by IIT-IIM alumni, delivering guaranteed lead generation and
+            sales for 9+ years within your budget.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3 lg:mt-[clamp(1.5rem,4svh,2.5rem)]">
-            <Link href="#growth-plan" className="btn btn-primary group h-13 px-7 text-base max-sm:w-full">
+            <Link
+              href="#growth-plan"
+              className="btn btn-primary group h-13 px-7 text-base max-sm:w-full"
+            >
               Get Started
               <ArrowRight
                 className="size-4 transition-transform group-hover:translate-x-0.5"
                 aria-hidden
               />
             </Link>
-            <a href={siteConfig.phones.primary.href} className="btn btn-light h-13 px-6 text-base max-sm:w-full">
+            <a
+              href={siteConfig.phones.primary.href}
+              className="btn btn-light h-13 px-6 text-base max-sm:w-full"
+            >
               <Phone className="size-4" aria-hidden />
               {siteConfig.phones.primary.label}
             </a>
@@ -72,8 +92,9 @@ export function Hero() {
             className="max-w-2xl scroll-mt-24 rounded-[1.75rem] border border-line bg-white p-5 shadow-[0_40px_80px_-48px_rgb(35_29_69/0.35)] sm:p-7 lg:max-w-none lg:p-[clamp(1.25rem,3.2svh,2rem)]"
           >
             <h2 className="mb-5 text-[1.5rem] leading-tight tracking-[-0.03em] sm:text-[1.65rem]">
-              Fill up the form and get <span className="whitespace-nowrap text-brand">50% OFF</span> on first month
-              fees
+              Fill up the form and get{" "}
+              <span className="whitespace-nowrap text-brand">50% OFF</span> on
+              first month fees
             </h2>
             <LeadForm source="Homepage hero" variant="compact" />
           </div>
@@ -86,12 +107,11 @@ export function Hero() {
             What We’re Offering to Our Clients
           </h2>
           <p className="max-w-3xl leading-relaxed text-ink/65 lg:col-span-8">
-            IIM Marketers, a leading digital marketing company in Bengaluru, leverages its in-house
-            AI tool to deliver guaranteed digital marketing results, proven strategies, and maximum
-            ROI.
+            IIM Marketers, a leading digital marketing company in Bengaluru,
+            leverages its in-house AI tool to deliver guaranteed digital
+            marketing results, proven strategies, and maximum ROI.
           </p>
         </div>
-        {/* gap-px over a line-coloured background draws the inner dividers */}
         <dl className="grid grid-cols-2 gap-px border-y border-line bg-line lg:grid-cols-4">
           {stats.map((s) => (
             <div
@@ -107,5 +127,5 @@ export function Hero() {
         </dl>
       </div>
     </section>
-  )
+  );
 }

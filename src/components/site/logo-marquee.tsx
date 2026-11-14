@@ -2,7 +2,6 @@ import Image from "next/image"
 
 import { cn } from "@/lib/utils"
 
-/** Infinite, pause-on-hover logo strip. Pure CSS — no client JS. */
 export function LogoMarquee({
   logos,
   reverse = false,

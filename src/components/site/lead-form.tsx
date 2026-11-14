@@ -14,7 +14,6 @@ import { cn } from "@/lib/utils"
 const initial: FormState = { status: "idle" }
 
 type Props = {
-  /** Identifies which form the lead came from (shown in the notification email). */
   source: string
   variant?: "compact" | "full"
   submitLabel?: string
@@ -31,7 +30,6 @@ export function LeadForm({
   const id = useId()
 
   useEffect(() => {
-    // Field-level problems are shown inline; delivery failures get a toast.
     if (state.status === "error" && state.message && !state.errors) toast.error(state.message)
   }, [state])
 
