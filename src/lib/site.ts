@@ -257,9 +257,12 @@ export const caseStudies = [
     timeline: "3 months",
     brief: "Event promotion",
     detail: "Event promotion and on-ground lead generation campaign.",
-    image: "/images/brand/hero-banner.webp",
-    width: 1600,
-    height: 800,
+    photo: { src: "/images/cases/apollo-event.webp", width: 1177, height: 1337, position: "60% 50%" },
+    /** Media split: photo column vs brand panel (CSS grid-template-columns). */
+    mediaColumns: "5fr 6fr",
+    photoAlt: "Apollo 24|7 brand ambassador at the promotion event",
+    logo: "/images/cases/apollo-logo.webp",
+    brandColor: "#ef5a23",
   },
   {
     client: "nalva",
@@ -269,9 +272,11 @@ export const caseStudies = [
     timeline: "3 months",
     brief: "E-commerce launch",
     detail: "Profitable e-commerce launch for Vanitha Textiles — website, ads and content.",
-    image: "/images/brand/team-banner.webp",
-    width: 3780,
-    height: 1890,
+    photo: { src: "/images/cases/nalva-launch.webp", width: 1941, height: 810, position: "40% 50%" },
+    mediaColumns: "7fr 4fr",
+    photoAlt: "Vanitha Textiles team launching the nalva.in website",
+    logo: "/images/cases/nalva-logo.webp",
+    brandColor: "#1fb0bc",
   },
 ]
 

@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, ArrowUpRight, Check } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Check, Clock } from "lucide-react"
 
 import { iconMap } from "@/components/site/icons"
 import { Reveal } from "@/components/site/reveal"
@@ -106,35 +106,80 @@ export function CaseStudies() {
           aside={<p>We measure success the way you do: footfall, orders and revenue.</p>}
         />
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-2">
+        <div className="mt-10 grid gap-5 sm:mt-12 lg:grid-cols-2 lg:gap-6">
           {caseStudies.map((c, i) => (
-            <Reveal key={c.client} delay={i * 100}>
-              <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-white">
-                <Image
-                  src={c.image}
-                  alt={`${c.client} — ${c.result}`}
-                  width={c.width}
-                  height={c.height}
-                  sizes="(min-width: 1024px) 600px, 100vw"
-                  className="aspect-[2/1] w-full object-cover"
-                />
-                <div className="flex flex-1 flex-col p-7 sm:p-9">
-                  <div className="flex items-center justify-between gap-4 text-sm">
-                    <h3 className="font-sans text-base font-semibold tracking-normal">{c.client}</h3>
-                    <span className="rounded-full bg-paper-deep px-3 py-1 text-ink/70">{c.brief}</span>
+            <Reveal key={c.client} delay={i * 100} className="h-full">
+              <article className="group flex h-full flex-col rounded-[1.75rem] border border-line bg-white p-2.5 transition duration-300 hover:-translate-y-1 hover:shadow-[0_32px_64px_-40px_rgb(35_29_69/0.35)]">
+                {/* Media: real photo beside a brand-coloured panel carrying the client's logo */}
+                <div
+                  className="grid aspect-[16/10] overflow-hidden rounded-[1.25rem]"
+                  style={{ gridTemplateColumns: c.mediaColumns }}
+                >
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src={c.photo.src}
+                      alt={c.photoAlt}
+                      fill
+                      sizes="(min-width: 1024px) 440px, 75vw"
+                      style={{ objectPosition: c.photo.position }}
+                      className="object-cover transition duration-500 group-hover:scale-[1.04]"
+                    />
+                    <span className="absolute top-3 left-3 rounded-full bg-white/90 px-2.5 py-1 text-[0.7rem] font-medium text-ink shadow-sm backdrop-blur-sm sm:top-4 sm:left-4 sm:text-xs">
+                      {c.brief}
+                    </span>
                   </div>
-                  <p className="mt-8 font-heading text-[clamp(3.5rem,7vw,5.5rem)] leading-none font-semibold tracking-[-0.06em] text-ink">
-                    {c.metric}
+                  <div
+                    className="flex items-center justify-center p-3"
+                    style={{ backgroundColor: c.brandColor }}
+                  >
+                    <Image
+                      src={c.logo}
+                      alt={`${c.client} logo`}
+                      width={160}
+                      height={160}
+                      className="aspect-square w-[72%] max-w-36 rounded-2xl object-cover shadow-[0_18px_40px_-18px_rgb(0_0_0/0.45)] ring-1 ring-white/25"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex flex-1 flex-col px-4 pt-6 pb-4 sm:px-6 sm:pt-7 sm:pb-6">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <h3 className="font-sans text-base font-semibold tracking-normal text-ink">
+                      {c.client}
+                    </h3>
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-3 py-1 text-xs font-medium text-brand">
+                      <Clock className="size-3.5" aria-hidden />
+                      In {c.timeline}
+                    </span>
+                  </div>
+                  <p className="mt-5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <span className="text-spectrum font-heading text-[clamp(3rem,6vw,4.75rem)] leading-[1.05] font-semibold tracking-[-0.06em]">
+                      {c.metric}
+                    </span>
+                    <span className="text-lg font-medium text-ink/75">{c.metricLabel}</span>
                   </p>
-                  <p className="mt-2 text-lg text-ink/70">
-                    {c.metricLabel} <span className="text-ink/40">in {c.timeline}</span>
-                  </p>
-                  <p className="mt-6 border-t border-line pt-5 text-[0.95rem] text-ink/60">{c.detail}</p>
+                  <p className="mt-4 text-[0.95rem] leading-relaxed text-ink/60">{c.detail}</p>
                 </div>
               </article>
             </Reveal>
           ))}
         </div>
+
+        <Reveal delay={200}>
+          <div className="mt-5 flex flex-col items-start justify-between gap-4 rounded-[1.75rem] border border-line bg-white px-6 py-5 sm:flex-row sm:items-center sm:px-8 lg:mt-6">
+            <p className="text-ink/70">
+              <span className="font-semibold text-ink">Your brand could be next.</span> Get a free
+              growth plan built around your numbers.
+            </p>
+            <Link href="/contact" className="btn btn-primary group h-11 shrink-0 px-5 max-sm:w-full">
+              Get my free growth plan
+              <ArrowRight
+                className="size-4 transition-transform group-hover:translate-x-0.5"
+                aria-hidden
+              />
+            </Link>
+          </div>
+        </Reveal>
       </div>
     </section>
   )

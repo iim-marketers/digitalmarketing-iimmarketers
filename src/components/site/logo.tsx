@@ -1,14 +1,20 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-export function Logo({ className, inverted = false }: { className?: string; inverted?: boolean }) {
+export function Logo({
+  className,
+  inverted = false,
+}: {
+  className?: string;
+  inverted?: boolean;
+}) {
   return (
     <Link
       href="/"
       aria-label="IIM Marketers — home"
-      className={cn("group inline-flex items-center gap-1.5", className)}
+      className={cn("group inline-flex items-center gap-0.5", className)}
     >
       <Image
         src="/images/brand/logo-footer.webp"
@@ -21,11 +27,11 @@ export function Logo({ className, inverted = false }: { className?: string; inve
       <span
         className={cn(
           "font-heading text-xl font-semibold tracking-[-0.03em]",
-          inverted ? "text-white" : "text-ink"
+          inverted ? "text-white" : "text-ink",
         )}
       >
         IIM Marketers
       </span>
     </Link>
-  )
+  );
 }
