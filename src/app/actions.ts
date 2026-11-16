@@ -1,5 +1,14 @@
 "use server"
 
+import {
+  emailLogoAttachment,
+  leadConfirmationEmail,
+  leadNotificationEmail,
+  newsletterNotificationEmail,
+  type Lead,
+} from "@/lib/email-templates"
+import { siteConfig } from "@/lib/site"
+
 export type FormState = {
   status: "idle" | "success" | "error"
   message?: string
@@ -14,39 +23,50 @@ function field(formData: FormData, key: string) {
   return typeof value === "string" ? value.trim() : ""
 }
 
-function escapeHtml(value: string) {
-  return value.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`)
+type Email = {
+  to: string[]
+  subject: string
+  html: string
+  text: string
+  replyTo?: string
 }
 
-async function deliver(subject: string, data: Record<string, string>) {
+function teamInbox() {
+  return (process.env.CONTACT_TO_EMAIL || siteConfig.email)
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean)
+}
+
+async function sendEmail(email: Email) {
   const apiKey = process.env.RESEND_API_KEY
-  const to = process.env.CONTACT_TO_EMAIL
-  if (!apiKey || !to) {
-    console.info(`[form] ${subject}`, data)
+  if (!apiKey) {
+    console.info(`[email] RESEND_API_KEY not set — would send "${email.subject}" to`, email.to)
     return true
   }
 
-  const rows = Object.entries(data)
-    .filter(([, v]) => v)
-    .map(
-      ([k, v]) =>
-        `<tr><td style="padding:4px 12px 4px 0;color:#625f7a">${escapeHtml(k)}</td><td>${escapeHtml(v)}</td></tr>`
-    )
-    .join("")
-
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      from: process.env.CONTACT_FROM_EMAIL ?? "IIM Marketers <onboarding@resend.dev>",
-      to: to.split(",").map((s) => s.trim()),
-      reply_to: data.Email || undefined,
-      subject,
-      html: `<h2>${escapeHtml(subject)}</h2><table>${rows}</table>`,
-    }),
-  })
-  if (!res.ok) console.error("[form] delivery failed", res.status, await res.text())
-  return res.ok
+  try {
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from: process.env.CONTACT_FROM_EMAIL || "IIM Marketers <onboarding@resend.dev>",
+        to: email.to,
+        reply_to: email.replyTo,
+        subject: email.subject,
+        html: email.html,
+        text: email.text,
+        attachments: [await emailLogoAttachment()],
+      }),
+    })
+    if (!res.ok) {
+      console.error(`[email] "${email.subject}" failed`, res.status, await res.text())
+    }
+    return res.ok
+  } catch (error) {
+    console.error(`[email] "${email.subject}" failed`, error)
+    return false
+  }
 }
 
 export async function submitLead(_prev: FormState, formData: FormData): Promise<FormState> {
@@ -64,20 +84,30 @@ export async function submitLead(_prev: FormState, formData: FormData): Promise<
   if (name.length < 2) errors.name = "Please enter your name."
   if (!EMAIL_RE.test(email)) errors.email = "Please enter a valid email address."
   if (!PHONE_RE.test(phone)) errors.phone = "Please enter a valid phone number."
-  if (message.length > 5000) errors.message = "Message is too long."
+  if (!subject) errors.subject = "Please enter a subject."
+  else if (subject.length > 200) errors.subject = "Subject is too long."
+  if (!message) errors.message = "Please enter a message."
+  else if (message.length > 5000) errors.message = "Message is too long."
 
   if (Object.keys(errors).length > 0) {
     return { status: "error", message: "Please fix the highlighted fields.", errors }
   }
 
-  const ok = await deliver(`New enquiry (${source})${subject ? `: ${subject}` : ""}`, {
-    Name: name,
-    Email: email,
-    Phone: phone,
-    Subject: subject,
-    Message: message,
-    Source: source,
+  const lead: Lead = { name, email, phone, subject, message, source }
+
+  const ok = await sendEmail({
+    to: teamInbox(),
+    replyTo: email,
+    ...leadNotificationEmail(lead),
   })
+
+  if (ok) {
+    await sendEmail({
+      to: [email],
+      replyTo: siteConfig.email,
+      ...leadConfirmationEmail(lead),
+    })
+  }
 
   if (!ok) {
     return {
@@ -108,7 +138,11 @@ export async function subscribeNewsletter(
     return { status: "error", message: "Please accept the privacy policy to subscribe." }
   }
 
-  const ok = await deliver("New newsletter subscriber", { Email: email })
+  const ok = await sendEmail({
+    to: teamInbox(),
+    replyTo: email,
+    ...newsletterNotificationEmail(email),
+  })
   return ok
     ? { status: "success", message: "You’re subscribed — welcome aboard!" }
     : { status: "error", message: "Something went wrong. Please try again later." }

@@ -27,7 +27,7 @@ export function LeadForm({
   submitLabel,
   className,
 }: Props) {
-  const [state, action, pending] = useFormAction(submitLead, initial)
+  const { state, pending, formProps } = useFormAction(submitLead, initial)
   const id = useId()
 
   useEffect(() => {
@@ -60,7 +60,7 @@ export function LeadForm({
 
   return (
     <form
-      action={action}
+      {...formProps}
       noValidate
       className={cn("flex flex-col", compact ? "gap-3.5" : "gap-4", className)}
     >
@@ -110,22 +110,26 @@ export function LeadForm({
             className={inputCls}
           />
         </Field>
-        <Field id={`${id}-subject`} label="Subject">
+        <Field id={`${id}-subject`} label="Subject" error={err.subject}>
           <Input
             id={`${id}-subject`}
             name="subject"
             placeholder="Subject"
+            required
+            aria-invalid={!!err.subject}
             className={inputCls}
           />
         </Field>
       </div>
 
-      <Field id={`${id}-message`} label="Message" error={err.message} optional>
+      <Field id={`${id}-message`} label="Message" error={err.message}>
         <Textarea
           id={`${id}-message`}
           name="message"
           rows={compact ? 2 : 5}
           placeholder="Write a Message"
+          required
+          aria-invalid={!!err.message}
           className={cn(inputCls, "h-auto py-3", compact ? "min-h-20" : "min-h-24")}
         />
       </Field>
@@ -150,14 +154,12 @@ function Field({
   id,
   label,
   error,
-  optional,
   className,
   children,
 }: {
   id: string
   label: string
   error?: string
-  optional?: boolean
   className?: string
   children: React.ReactNode
 }) {
@@ -165,7 +167,9 @@ function Field({
     <div className={cn("flex min-w-0 flex-col gap-1.5", className)}>
       <Label htmlFor={id} className="text-sm font-medium text-ink">
         {label}
-        {optional ? <span className="font-normal text-muted-foreground"> (optional)</span> : null}
+        <span aria-hidden className="-ml-1 text-destructive">
+          *
+        </span>
       </Label>
       {children}
       {error ? <p className="text-xs text-destructive">{error}</p> : null}

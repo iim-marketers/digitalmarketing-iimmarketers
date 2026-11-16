@@ -4,6 +4,9 @@ import { posts } from "./src/lib/posts";
 
 const nextConfig: NextConfig = {
   cacheComponents: true,
+  outputFileTracingIncludes: {
+    "/**": ["./public/images/brand/logo-email.png"],
+  },
   partialPrefetching: true,
   images: {
     formats: ["image/avif", "image/webp"],
