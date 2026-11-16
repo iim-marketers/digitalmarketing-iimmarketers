@@ -1,16 +1,16 @@
-import type { Metadata } from "next"
-import { Mail, Phone } from "lucide-react"
+import type { Metadata } from "next";
+import { Mail, Phone } from "lucide-react";
 
-import { LeadForm } from "@/components/site/lead-form"
-import { PageHero } from "@/components/site/page-hero"
-import { siteConfig } from "@/lib/site"
+import { LeadForm } from "@/components/site/lead-form";
+import { PageHero } from "@/components/site/page-hero";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with IIM Marketers for a free trial. Call +91 62913 92772 or email hello@iimmarketers.com.",
+    "Get in touch with IIM Marketers for a free trial. Call +91 62913 92772 or email iimmarketers@gmail.com.",
   alternates: { canonical: "/contact" },
-}
+};
 
 const channels = [
   {
@@ -27,7 +27,7 @@ const channels = [
     href: `mailto:${siteConfig.email}`,
     tone: "bg-paper-deep text-ink",
   },
-]
+];
 
 export default function ContactPage() {
   return (
@@ -54,11 +54,15 @@ export default function ContactPage() {
                     href={c.href}
                     className="group flex items-center gap-4 rounded-2xl border border-line bg-white p-5 transition-colors hover:border-ink/30"
                   >
-                    <span className={`grid size-12 shrink-0 place-items-center rounded-xl ${c.tone}`}>
+                    <span
+                      className={`grid size-12 shrink-0 place-items-center rounded-xl ${c.tone}`}
+                    >
                       <Icon className="size-5" aria-hidden />
                     </span>
                     <span className="min-w-0">
-                      <span className="block text-sm text-muted-foreground">{c.label}</span>
+                      <span className="block text-sm text-muted-foreground">
+                        {c.label}
+                      </span>
                       <span className="block truncate font-heading text-lg font-semibold text-ink">
                         {c.value}
                       </span>
@@ -71,7 +75,10 @@ export default function ContactPage() {
             <div className="rounded-3xl border p-6">
               <ul className="flex flex-col divide-y">
                 {siteConfig.affiliates.map((a) => (
-                  <li key={a.label} className="flex flex-col py-3 first:pt-0 last:pb-0">
+                  <li
+                    key={a.label}
+                    className="flex flex-col py-3 first:pt-0 last:pb-0"
+                  >
                     <span className="text-xs font-semibold tracking-wide text-ink/50 uppercase">
                       {a.label}
                     </span>
@@ -88,5 +95,5 @@ export default function ContactPage() {
         </div>
       </section>
     </>
-  )
+  );
 }

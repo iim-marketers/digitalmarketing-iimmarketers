@@ -9,7 +9,7 @@ export const siteConfig = {
   description:
     "5-star rated digital marketing agency founded by IIT-IIM alumni. Guaranteed lead generation, SEO, PPC, social media, video production and AI consulting for 150+ brands over 9+ years.",
   tagline: "We triple your business in 6 months.",
-  email: "hello@iimmarketers.com",
+  email: "iimmarketers@gmail.com",
   phones: {
     primary: { label: "+91 62913 92772", href: "tel:+916291392772" },
     secondary: { label: "+91 99367 84019", href: "tel:+919936784019" },
