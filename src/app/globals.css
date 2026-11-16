@@ -246,7 +246,7 @@
 
 .hero-deer-scene {
   --deer-delay: 0.2s;
-  --deer-stride: 0.45s;
+  --deer-stride: 0.7s;
   --deer-gap: 0.25s;
   --deer-front-strides: 3;
   --deer-back-strides: 2;
@@ -271,6 +271,7 @@
 }
 @media (width >= 64rem) {
   .hero-deer-scene {
+    --deer-stride: 0.45s;
     --deer-front-strides: 5;
     --deer-back-strides: 5;
     --deer-front-size: 26rem;
