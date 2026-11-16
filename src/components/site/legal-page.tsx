@@ -1,6 +1,6 @@
-import { PageHero } from "@/components/site/page-hero"
+import { PageHero } from "@/components/site/page-hero";
 
-export type LegalSection = { heading: string; paragraphs: string[] }
+export type LegalSection = { heading: string; paragraphs: string[] };
 
 export function LegalPage({
   title,
@@ -8,14 +8,17 @@ export function LegalPage({
   intro,
   sections,
 }: {
-  title: string
-  updated?: string
-  intro?: string
-  sections: LegalSection[]
+  title: string;
+  updated?: string;
+  intro?: string;
+  sections: LegalSection[];
 }) {
   return (
     <>
-      <PageHero title={title} crumbs={[{ label: "Home", href: "/" }, { label: title }]} />
+      <PageHero
+        title={title}
+        crumbs={[{ label: "Home", href: "/" }, { label: title }]}
+      />
       <section className="section">
         <div className="container-page grid gap-12 lg:grid-cols-[240px_1fr]">
           <nav aria-label="On this page" className="hidden lg:block">
@@ -39,14 +42,25 @@ export function LegalPage({
           </nav>
           <article className="max-w-3xl">
             {updated ? (
-              <p className="mb-4 text-sm text-muted-foreground">Last updated: {updated}</p>
+              <p className="mb-4 text-sm text-muted-foreground">
+                Last updated: {updated}
+              </p>
             ) : null}
-            {intro ? <p className="text-lg leading-relaxed text-ink/80">{intro}</p> : null}
+            {intro ? (
+              <p className="text-lg leading-relaxed text-ink/80">{intro}</p>
+            ) : null}
             {sections.map((s, i) => (
-              <section key={s.heading} id={`section-${i + 1}`} className="scroll-mt-28">
-                <h2 className="mt-10 text-2xl font-semibold first:mt-0">{s.heading}</h2>
+              <section
+                key={s.heading}
+                id={`section-${i + 1}`}
+                className="scroll-mt-28 not-first:mt-6"
+              >
+                <h2 className="mb-4 text-2xl font-semibold">{s.heading}</h2>
                 {s.paragraphs.map((p) => (
-                  <p key={p} className="mt-4 leading-relaxed text-ink/75">
+                  <p
+                    key={p}
+                    className="mb-4 leading-relaxed text-ink/75 last:mb-0"
+                  >
                     {p}
                   </p>
                 ))}
@@ -56,5 +70,5 @@ export function LegalPage({
         </div>
       </section>
     </>
-  )
+  );
 }
