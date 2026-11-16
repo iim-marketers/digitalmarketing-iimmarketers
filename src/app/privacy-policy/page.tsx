@@ -1,18 +1,20 @@
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
-import { LegalPage, type LegalSection } from "@/components/site/legal-page"
+import { LegalPage, type LegalSection } from "@/components/site/legal-page";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "Privacy Policy of IIM Marketers.",
   alternates: { canonical: "/privacy-policy" },
-}
+};
 
 // Verbatim WordPress default policy (mentions comments/logins this site lacks) — review before launch.
 const sections: LegalSection[] = [
   {
     heading: "Who we are",
-    paragraphs: ["Our website address is: https://digitalmarketing.iimmarketers.com/."],
+    paragraphs: [
+      "Our website address is: https://digitalmarketing.iimmarketers.com",
+    ],
   },
   {
     heading: "Comments",
@@ -64,10 +66,12 @@ const sections: LegalSection[] = [
   },
   {
     heading: "Where we send your data",
-    paragraphs: ["Visitor comments may be checked through an automated spam detection service."],
+    paragraphs: [
+      "Visitor comments may be checked through an automated spam detection service.",
+    ],
   },
-]
+];
 
 export default function PrivacyPolicyPage() {
-  return <LegalPage title="Privacy Policy" sections={sections} />
+  return <LegalPage title="Privacy Policy" sections={sections} />;
 }
