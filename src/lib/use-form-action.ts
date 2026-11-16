@@ -1,17 +1,21 @@
 "use client"
 
-import { startTransition, useActionState, useLayoutEffect, useRef } from "react"
+import {
+  startTransition,
+  useActionState,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  type FormEvent,
+} from "react"
 
 import type { FormState } from "@/app/actions"
 
 const RESET = "reset"
 
-/**
- * `useActionState` for a form server action that clears its result (errors,
- * success message) when the page is hidden. With `cacheComponents`, Next.js
- * keeps visited pages mounted inside React `<Activity>`, so without this the
- * last result would still show after navigating away and back.
- */
+const SUCCESS_DISPLAY_MS = 5000
+
 export function useFormAction(
   action: (prev: FormState, data: FormData) => Promise<FormState>,
   initial: FormState
@@ -22,13 +26,40 @@ export function useFormAction(
     initial
   )
 
+  const formEl = useRef<HTMLFormElement | null>(null)
+  const ref = useCallback((el: HTMLFormElement | null) => {
+    if (el) formEl.current = el
+  }, [])
+
+  const onSubmit = useCallback(
+    (event: FormEvent<HTMLFormElement>) => {
+      // Not <form action>: React resets the form after an action, wiping fields on validation errors.
+      event.preventDefault()
+      if (pending) return
+      const data = new FormData(event.currentTarget)
+      startTransition(() => dispatch(data))
+    },
+    [dispatch, pending]
+  )
+
+  useEffect(() => {
+    if (state.status !== "success") return
+    const timer = setTimeout(
+      () => startTransition(() => dispatch(RESET)),
+      SUCCESS_DISPLAY_MS
+    )
+    return () => clearTimeout(timer)
+  }, [state, dispatch])
+
   const hasResult = useRef(false)
   useLayoutEffect(() => {
     hasResult.current = state.status !== "idle"
   }, [state])
 
+  // cacheComponents keeps visited pages mounted in <Activity>; clear the form when the page is hidden.
   useLayoutEffect(
     () => () => {
+      formEl.current?.reset()
       if (!hasResult.current) return
       hasResult.current = false
       startTransition(() => dispatch(RESET))
@@ -36,5 +67,5 @@ export function useFormAction(
     [dispatch]
   )
 
-  return [state, dispatch, pending] as const
+  return { state, pending, formProps: { ref, onSubmit } }
 }

@@ -12,7 +12,7 @@ import { useFormAction } from "@/lib/use-form-action";
 const initial: FormState = { status: "idle" };
 
 export function NewsletterForm() {
-  const [state, action, pending] = useFormAction(subscribeNewsletter, initial);
+  const { state, pending, formProps } = useFormAction(subscribeNewsletter, initial);
   const id = useId();
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export function NewsletterForm() {
   }
 
   return (
-    <form action={action} className="flex flex-col gap-3" noValidate>
+    <form {...formProps} className="flex flex-col gap-3" noValidate>
       <label htmlFor={`${id}-email`} className="sr-only">
         Email address
       </label>
