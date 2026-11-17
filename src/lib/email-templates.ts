@@ -32,8 +32,8 @@ const FONT = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial
 const LOGO = {
   cid: "iim-marketers-logo",
   file: "public/images/brand/logo-email.png",
-  width: 80,
-  height: 76,
+  width: 108,
+  height: 104,
 }
 
 export type EmailAttachment = {
@@ -284,6 +284,114 @@ export function leadConfirmationEmail(lead: Lead): EmailContent {
 
   return {
     subject: `We’ve received your message — ${siteConfig.name}`,
+    html,
+    text,
+  }
+}
+
+export const WELCOME_COUPON = "WELCOME10"
+
+function couponBlock(code: string) {
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:8px 0 4px;">
+<tr><td align="center" bgcolor="${C.brandSoft}" style="background-color:${C.brandSoft};border:2px dashed ${C.brand};border-radius:14px;padding:22px 16px;text-align:center;font-family:${FONT};">
+  <p style="margin:0 0 6px;font-family:${FONT};font-size:12px;font-weight:600;letter-spacing:0.6px;text-transform:uppercase;color:${C.brandDeep};">Your coupon code</p>
+  <p style="margin:0;font-family:'SFMono-Regular',Menlo,Consolas,'Courier New',monospace;font-size:30px;line-height:1.2;font-weight:700;letter-spacing:4px;color:${C.ink};">${esc(code)}</p>
+  <p style="margin:8px 0 0;font-family:${FONT};font-size:13px;color:${C.muted};">Mention this code to our sales team to claim your welcome offer.</p>
+</td></tr>
+</table>`
+}
+
+function steps(items: string[]) {
+  const rows = items
+    .map(
+      (html, i) => `<tr>
+  <td valign="top" width="28" style="padding:0 12px 12px 0;width:28px;">
+    <div style="width:26px;height:26px;line-height:26px;border-radius:999px;background-color:${C.brand};color:${C.white};font-family:${FONT};font-size:13px;font-weight:700;text-align:center;">${i + 1}</div>
+  </td>
+  <td valign="top" style="padding:3px 0 12px;font-family:${FONT};font-size:15px;line-height:1.5;color:${C.ink};">${html}</td>
+</tr>`
+    )
+    .join("")
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">${rows}</table>`
+}
+
+function contactCard(rows: [label: string, valuesHtml: string[]][]) {
+  const body = rows
+    .map(
+      ([label, values], i) => `<tr><td style="padding:14px 16px;font-family:${FONT};${i ? `border-top:1px solid ${C.border};` : ""}">
+  <p style="margin:0 0 4px;font-family:${FONT};font-size:12px;color:${C.muted};">${esc(label)}</p>
+  ${values
+    .map((v) => `<p style="margin:0;font-family:${FONT};font-size:15px;line-height:1.6;font-weight:500;color:${C.ink};white-space:nowrap;">${v}</p>`)
+    .join("")}
+</td></tr>`
+    )
+    .join("")
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid ${C.border};border-radius:12px;border-collapse:separate;">${body}</table>`
+}
+
+export function newsletterWelcomeEmail(code = WELCOME_COUPON): EmailContent {
+  const { primary, secondary } = siteConfig.phones
+  const salesHref = `mailto:${siteConfig.email}?subject=${encodeURIComponent(
+    `Redeem coupon ${code}`
+  )}&body=${encodeURIComponent(
+    `Hi ${siteConfig.name} team,\n\nI'd like to redeem my welcome coupon ${code}. Please get in touch with me.\n\nThanks!`
+  )}`
+
+  const html = layout({
+    preheader: "Thanks for subscribing! Open to unlock your exclusive welcome offer.",
+    eyebrow: "Welcome aboard",
+    body: [
+      heading("Thank you for subscribing!"),
+      paragraph(
+        `We’re delighted to have you with us. As a subscriber, you’ll be the first to hear about our latest marketing insights, growth strategies and exclusive offers from the team at <strong>${esc(siteConfig.name)}</strong>.`
+      ),
+      paragraph("To say thank you, here’s a little welcome gift:"),
+      couponBlock(code),
+      sectionLabel("How to redeem"),
+      steps([
+        `Contact our sales team by phone or email (details below).`,
+        `Share your coupon code <strong>${esc(code)}</strong>.`,
+        `Our team will apply the offer to your engagement.`,
+      ]),
+      sectionLabel("Contact our sales team"),
+      contactCard([
+        ["Call us", [link(primary.href, primary.label), link(secondary.href, secondary.label)]],
+        ["Email us", [link(salesHref, siteConfig.email)]],
+      ]),
+      buttons(
+        button(salesHref, "Email to redeem"),
+        button(primary.href, "Call us", "secondary")
+      ),
+      paragraph(`Warm regards,<br><strong>Team ${esc(siteConfig.name)}</strong>`, "margin:28px 0 0;"),
+    ].join("\n"),
+    footer: `${esc(siteConfig.name)} · ${link(`mailto:${siteConfig.email}`, siteConfig.email)} · ${link(siteConfig.url, siteHost)}<br>You’re receiving this because you subscribed to our newsletter on our website. If that wasn’t you, you can safely ignore this email.`,
+  })
+
+  const text = [
+    "Thank you for subscribing!",
+    "",
+    `We’re delighted to have you with us. As a subscriber, you’ll be the first to hear about our latest marketing insights, growth strategies and exclusive offers from the team at ${siteConfig.name}.`,
+    "",
+    "To say thank you, here’s a little welcome gift:",
+    "",
+    `  YOUR COUPON CODE: ${code}`,
+    "",
+    "How to redeem:",
+    "1. Contact our sales team by phone or email (details below).",
+    `2. Share your coupon code ${code}.`,
+    "3. Our team will apply the offer to your engagement.",
+    "",
+    "Contact our sales team:",
+    `Call:  ${primary.label} / ${secondary.label}`,
+    `Email: ${siteConfig.email} (or just reply to this email)`,
+    "",
+    "Warm regards,",
+    `Team ${siteConfig.name}`,
+    siteConfig.url,
+  ].join("\n")
+
+  return {
+    subject: `You’re in! Thanks for subscribing & welcome to ${siteConfig.name}`,
     html,
     text,
   }

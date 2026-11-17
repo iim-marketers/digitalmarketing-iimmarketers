@@ -5,6 +5,7 @@ import {
   leadConfirmationEmail,
   leadNotificationEmail,
   newsletterNotificationEmail,
+  newsletterWelcomeEmail,
   type Lead,
 } from "@/lib/email-templates";
 import { siteConfig } from "@/lib/site";
@@ -175,8 +176,21 @@ export async function subscribeNewsletter(
     replyTo: email,
     ...newsletterNotificationEmail(email),
   });
+
+  if (ok) {
+    await sendEmail({
+      to: [email],
+      replyTo: siteConfig.email,
+      ...newsletterWelcomeEmail(),
+    });
+  }
+
   return ok
-    ? { status: "success", message: "You’re subscribed — welcome aboard!" }
+    ? {
+        status: "success",
+        message:
+          "Thank you for subscribing! A welcome gift is on its way to your inbox.",
+      }
     : {
         status: "error",
         message: "Something went wrong. Please try again later.",
